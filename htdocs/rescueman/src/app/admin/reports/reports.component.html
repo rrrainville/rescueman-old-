@@ -1,0 +1,266 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin']">Admin Console</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Reports</li>
+      </ol>
+    </nav>
+
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="card text-dark">
+          <div class="card-header">
+            <i class="fa fa-print"></i> Reports
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-md-4 pull-left">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-outline-secondary" title="New" ng-click="go('/vet/new')">
+                      <i class="fa fa-plus"></i> New</button>
+                    <button type="button" class="btn btn-outline-secondary" title="Print List">
+                      <i class="fa fa-print"></i> Print</button>
+                    <button type="button" class="btn btn-outline-secondary" title="Export List">
+                      <i class="fa fa-file-excel-o"></i> Export</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-inline">
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Show</label>
+                  <select class="custom-select custom-select-sm form-control form-control-sm my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">entries</label>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6">
+                <div class="form-inline  justify-content-end">
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Search:</label>
+                  <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+              <table class="table table-responsive-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Report Type</th>
+                    <th>Modification Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Adoptions per Month </td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adopted Animals with Missed and Upcoming Visits</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Animals Added In Last 14 Days</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Animals Adopted Per Month</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Animals with Adopters</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Total Costs By Animal</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Total Costs By Date</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adopters with Outstanding Fees</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Fosters</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>People with Vet Skills</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Inventory in Storage</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Upcoming and Past Events</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Vet Visits</td>
+                    <td>Adminstrative</td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                Showing 1 to 10 of 57 entries
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

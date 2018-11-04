@@ -1,0 +1,284 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      </ol>
+    </nav>
+
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card text-white bg-info o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-address-card-o"></i>
+            </div>
+            <div class="mr-5">
+              <h1>1</h1> Contact(s)
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/people']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-white bg-warning o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-paw"></i>
+            </div>
+            <div class="mr-5">
+              <h1>12</h1> Animal(s)
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/animals']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-white bg-danger o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-envelope"></i>
+            </div>
+            <div class="mr-5">
+              <h1>18</h1> Message(s)
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/messages']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-white bg-success o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-envelope"></i>
+            </div>
+            <div class="mr-5">
+              <h1>$9,000</h1> Balance
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/finance']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-lg-3">
+        <div class="card text-white bg-dark o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-truck"></i>
+            </div>
+            <div class="mr-5">
+              <h1>2</h1> Transport(s)
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/activities/transport']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-white bg-primary o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-hospital-o"></i>
+            </div>
+            <div class="mr-5">
+              <h1>5</h1> Vet Appointment(s)
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/activities/vetappt']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-dark bg-light o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-exchange"></i>
+            </div>
+            <div class="mr-5">
+              <h1>2</h1> Intakes(s)
+            </div>
+          </div>
+          <a class="card-footer text-dark clearfix small z-1" [routerLink]="['/animals']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-white bg-secondary o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-home"></i>
+            </div>
+            <div class="mr-5">
+              <h1>1</h1> Foster Applications
+            </div>
+          </div>
+          <a class="card-footer text-white clearfix small z-1" [routerLink]="['/animals']">
+            <span class="float-left">View Details</span>
+            <span class="float-right">
+              <i class="fa fa-angle-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="card text-dark">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> To Do List
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-inline">
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Show</label>
+                  <select class="custom-select custom-select-sm form-control form-control-sm my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">entries</label>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6">
+                <div class="form-inline  justify-content-end">
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Search:</label>
+                  <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+              <table class="table table-responsive-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Owner</th>
+                    <th>Priority</th>
+                    <th>Due</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Vet Visit</td>
+                    <td>Andrea McCoy</td>
+                    <td>
+                      <span class="badge badge-pill badge-danger">High</span>
+                    </td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <button class="btn btn-success">Pending</button>
+                    </td>
+                    <td style="width:100px">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Vet Visit</td>
+                    <td>Andrea McCoy</td>
+                    <td>
+                      <span class="badge badge-pill badge-danger">High</span>
+                    </td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <button class="btn btn-success">Pending</button>
+                    </td>
+                    <td style="width:100px">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Vet Visit</td>
+                    <td>Andrea McCoy</td>
+                    <td>
+                      <span class="badge badge-pill badge-warning">Medium</span>
+                    </td>
+                    <td>28/03/2018 02:00 PM</td>
+                    <td>
+                      <button class="btn btn-success">Pending</button>
+                    </td>
+                    <td style="width:100px">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                  Showing 1 to 10 of 57 entries
+              </div>
+              <div class="col-sm-12 col-md-6">
+                  <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-end">
+                        <li class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">Next</a>
+                        </li>
+                      </ul>
+                    </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

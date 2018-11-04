@@ -1,0 +1,277 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">People</li>
+      </ol>
+    </nav>
+
+    <div class="row mt-3">
+      <div class="col-lg-12">
+        <div class="card text-dark">
+          <div class="card-header">
+            <i class="fa fa-address-card-o"></i> People
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col col-md-4 pull-left">
+                      <div class="btn-toolbar" role="toolbar" aria-label="...">
+                          <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-outline-secondary" title="New" ng-click="go('/vet/new')">
+                                  <i class="fa fa-plus"></i> New</button>
+                              <button type="button" class="btn btn-outline-secondary" title="Print List">
+                                  <i class="fa fa-print"></i> Print</button>
+                              <button type="button" class="btn btn-outline-secondary" title="Export List">
+                                  <i class="fa fa-file-excel-o"></i> Export</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-inline">
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Show</label>
+                  <select class="custom-select custom-select-sm form-control form-control-sm my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option value="10" selected>10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">entries</label>
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6">
+                <div class="form-inline  justify-content-end">
+                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Search:</label>
+                  <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+              <table class="table table-responsive-sm table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Andrea McCoy</td>
+                    <td>(613) 123-4567</td>
+                    <td>andrea@mccoy.com</td>
+                    <td>
+                      <span class="badge badge-primary">
+                        <i class="fa fa-handshake-o"></i>
+                      </span>
+                      <span class="badge badge-warning">
+                        <i class="fa fa-life-ring"></i>
+                      </span>
+                      <span class="badge badge-info">
+                        <i class="fa fa-credit-card"></i>
+                      </span>
+                      <span class="badge badge-success">
+                        <i class="fa fa-taxi"></i>
+                      </span>
+                      <span class="badge badge-danger">
+                        <i class="fa fa-bed"></i>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="badge badge-success">Active</span>
+                    </td>
+                    <td style="width:140px">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                  <td>Andrea McCoy</td>
+                  <td>(613) 123-4567</td>
+                  <td>andrea@mccoy.com</td>
+                  <td>
+                    <span class="badge badge-primary">
+                      <i class="fa fa-handshake-o"></i>
+                    </span>
+                    <span class="badge badge-info">
+                      <i class="fa fa-credit-card"></i>
+                    </span>
+                    <span class="badge badge-danger">
+                      <i class="fa fa-bed"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-success">Active</span>
+                  </td>
+                  <td style="width:140px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                      <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                      <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                    </div>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>Andrea McCoy</td>
+                  <td>(613) 123-4567</td>
+                  <td>andrea@mccoy.com</td>
+                  <td>
+                    <span class="badge badge-warning">
+                      <i class="fa fa-life-ring"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-success">Active</span>
+                  </td>
+                  <td style="width:140px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                      <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                      <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                    </div>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>Andrea McCoy</td>
+                  <td>(613) 123-4567</td>
+                  <td>andrea@mccoy.com</td>
+                  <td>
+                    <span class="badge badge-primary">
+                      <i class="fa fa-handshake-o"></i>
+                    </span>
+                    <span class="badge badge-warning">
+                      <i class="fa fa-life-ring"></i>
+                    </span>
+                    <span class="badge badge-info">
+                      <i class="fa fa-credit-card"></i>
+                    </span>
+                    <span class="badge badge-success">
+                      <i class="fa fa-taxi"></i>
+                    </span>
+                    <span class="badge badge-danger">
+                      <i class="fa fa-bed"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-success">Active</span>
+                  </td>
+                  <td style="width:140px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                      <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                      <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                    </div>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>Andrea McCoy</td>
+                  <td>(613) 123-4567</td>
+                  <td>andrea@mccoy.com</td>
+                  <td>
+                    <span class="badge badge-primary">
+                      <i class="fa fa-handshake-o"></i>
+                    </span>
+                    <span class="badge badge-info">
+                      <i class="fa fa-credit-card"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-default">Inactive</span>
+                  </td>
+                  <td style="width:140px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                      <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                      <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                    </div>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>Andrea McCoy</td>
+                  <td>(613) 123-4567</td>
+                  <td>andrea@mccoy.com</td>
+                  <td>
+                    <span class="badge badge-success">
+                      <i class="fa fa-taxi"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-success">Active</span>
+                  </td>
+                  <td style="width:140px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                      <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                      <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                    </div>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>Andrea McCoy</td>
+                  <td>(613) 123-4567</td>
+                  <td>andrea@mccoy.com</td>
+                  <td>
+                    <span class="badge badge-primary">
+                      <i class="fa fa-handshake-o"></i>
+                    </span>
+                    <span class="badge badge-info">
+                      <i class="fa fa-credit-card"></i>
+                    </span>
+                    <span class="badge badge-danger">
+                      <i class="fa fa-bed"></i>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="badge badge-default">Inactive</span>
+                  </td>
+                  <td style="width:140px">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
+                      <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
+                      <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                    </div>
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                Showing 1 to 10 of 57 entries
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

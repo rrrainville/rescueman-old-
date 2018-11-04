@@ -1,0 +1,73 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Admin Console</li>
+      </ol>
+    </nav>
+
+    <div class="row mt-3">
+      <div class="col-lg-4 mt-3">
+        <div class="card text-white bg-info o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-user"></i>
+            </div>
+            <div class="mr-5">
+              <h2><a [routerLink]="['users']" class="card-link text-white">Users</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-3">
+        <div class="card text-white bg-info o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-sitemap"></i>
+            </div>
+            <div class="mr-5">
+              <h2><a [routerLink]="['organizations']" class="card-link text-white">Organizations</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-3">
+        <div class="card text-white bg-info o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-print"></i>
+            </div>
+            <div class="mr-5">
+              <h2><a [routerLink]="['reports']" class="card-link text-white">Reports</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-3">
+        <div class="card text-white bg-info o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-file-text"></i>
+            </div>
+            <div class="mr-5">
+              <h2><a [routerLink]="['documents']" class="card-link text-white">Documents</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mt-3">
+        <div class="card text-white bg-info o-hidden h-100">
+          <div class="card-body">
+            <div class="card-body-icon">
+              <i class="fa fa-fw fa-shield"></i>
+            </div>
+            <div class="mr-5">
+              <h2><a [routerLink]="['securityroles']" class="card-link text-white">Security Roles</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
