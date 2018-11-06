@@ -1,0 +1,17 @@
+--criar tabela
+php artisan make:migration create_TABLENAME_table –-create=create_TABLENAME_table
+
+--coloca os campos no arquivo criado em database/migrations
+
+--executa para criar as tabelas
+php artisan migrate
+
+
+https://www.phpflow.com/php/create-rest-api-example-using-lumen-micro-framework-laravel/
+
+https://auth0.com/blog/developing-restful-apis-with-lumen/
+
+
+--para servir o aplicativo
+
+php -S localhost:8000 -t public

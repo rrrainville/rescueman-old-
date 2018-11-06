@@ -7,19 +7,9 @@ import { AuthService } from './security/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Rescue Management';
 
-  showMenu: boolean = false;
-
-  constructor(private authService: AuthService) {  }
+  constructor() {  }
 
   ngOnInit() {
-    this.authService.showMenuEmitter.subscribe(
-      show => this.showMenu = show
-    );
-  }
-
-  Logout() {
-    this.authService.doLogout();
   }
 }

@@ -58,6 +58,8 @@ import { RegisterComponent } from './security/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     PageNotFoundComponent,
     LoginComponent,
     ForgetPasswordComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
