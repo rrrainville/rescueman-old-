@@ -15,8 +15,29 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+
+
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->get('organizations',  ['uses' => 'OrganizationController@showAllOrganizations']);
+    $router->post(
+        'auth/login', 
+        [
+           'uses' => 'AuthController@authenticate'
+        ]
+    );
+
+    $router->group(
+        ['middleware' => 'jwt.auth'], 
+        function() use ($router) {
+            $router->get('users', function() {
+                $users = \App\User::all();
+                return response()->json($users);
+            });
+
+            
+        }
+    );    
+
+    $router->get('organizations',  ['uses' => 'OrganizationController@showAllOrganizations']);    
   
     $router->get('organizations/{id}', ['uses' => 'OrganizationController@showOneOrganization']);
   

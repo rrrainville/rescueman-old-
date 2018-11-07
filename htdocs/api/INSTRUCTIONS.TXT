@@ -15,3 +15,7 @@ https://auth0.com/blog/developing-restful-apis-with-lumen/
 --para servir o aplicativo
 
 php -S localhost:8000 -t public
+
+--para limpar cache
+composer dump-autoload
+
