@@ -23,9 +23,7 @@ class OrganizationController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'website' => 'required', 
             'phone' => 'required', 
-            'address' => 'required', 
             'created_by' => 'required', 
             'updated_by' => 'required'
         ]);

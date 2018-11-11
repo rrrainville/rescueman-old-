@@ -2,7 +2,7 @@
   <div class="card-header">
     Login
   </div>
-  <div class="card-body">
+  <div class="card-body" [formGroup]="formLogin">
     <div class="form-group">
       <label for="user">Email address</label>
       <input [(ngModel)]="user.name" type="email" class="form-control" id="user" aria-describedby="emailHelp"
@@ -27,3 +27,5 @@
     <button class="btn btn-primary btn-lg btn-block" (click)="doLogin()"><span class="fa fa-sign-in"></span> Login</button>
   </div>
 </div>
+
+<app-form-debug [form]="formLogin"></app-form-debug>

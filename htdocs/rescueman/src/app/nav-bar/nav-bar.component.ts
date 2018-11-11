@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../security/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +13,10 @@ export class NavBarComponent implements OnInit {
 
   showMenu: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.authService.showMenuEmitter.subscribe(
@@ -24,5 +28,7 @@ export class NavBarComponent implements OnInit {
     console.log('Logout');
 
     this.authService.doLogout();
+
+    this.router.navigate(['/login']);
   }
 }

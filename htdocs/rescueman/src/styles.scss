@@ -4,6 +4,9 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
+// regular style toast
+@import '~ngx-toastr/toastr.css';
+
 .breadcrumb {
   background-color: #fff;
 }

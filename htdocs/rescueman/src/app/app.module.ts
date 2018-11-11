@@ -2,10 +2,12 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './security/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +62,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormDebugComponent } from './shared/form-debug/form-debug.component';
 
 @NgModule({
   declarations: [
@@ -109,11 +112,13 @@ import { FooterComponent } from './footer/footer.component';
     ForgetPasswordComponent,
     RegisterComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    FormDebugComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({
@@ -121,6 +126,8 @@ import { FooterComponent } from './footer/footer.component';
       useFactory: adapterFactory
     }),
     AppRoutingModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     AngularFontAwesomeModule
   ],
   providers: [

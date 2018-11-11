@@ -54,6 +54,9 @@ class AuthController extends BaseController
             'email'     => 'required|email',
             'password'  => 'required'
         ]);
+        
+        //error_log($this->request);
+
         // Find the user by email
         $user = User::where('email', $this->request->input('email'))->first();
         if (!$user) {
