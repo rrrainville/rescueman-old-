@@ -1,9 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { environment } from './../../environments/environment';
+import { environment } from '../../../environments/environment';
 
-import { User } from './user';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -27,64 +26,30 @@ export class AuthService {
     const data = { 'email': username, 'password': password };
     const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post(this.apiURL, data, { headers: reqHeader });
-
-    /*
-    //if (user.name === 'user@gmail.com' &&
-    //  user.password === '123456') {
-
-    if (username === '1' &&
-      password === '1') {
-        this.userAuthenticated = true;
-
-        this.showMenuEmitter.emit(true);
-
-        this.router.navigate(['/']);
-    } else {
-      this.userAuthenticated = false;
-
-      this.showMenuEmitter.emit(false);
-    }
-    */
+    return this.http.post(this.apiURL, data, { headers: reqHeader });    
   }
 
   doLogout() {
     console.log('doLogout');
 
-    this.setUserAuthenticated(false, null);
-
-    // this.userAuthenticated = false;
-
-    // this.showMenuEmitter.emit(false);
-
-    // debugger;
-
-    // if(localStorage.userToken)
-    //   localStorage.removeItem('userToken');
-
-    //this.router.navigate(['/login']);
+    this.setUserAuthenticated(false, null, null);
   }
 
-  resetPassword(user: User) {
+  resetPassword(email) {
     console.log('resetPassword');
-    console.log(user);
+    console.log(email);
 
     this.router.navigate(['/login']);
   }
 
-  doSignUp(user: User) {
-    console.log('doSignUp');
-    console.log(user);
-
-    this.router.navigate(['/login']);
-  }
-
-  setUserAuthenticated(status, access_token) {
+  setUserAuthenticated(status, access_token, userid) {
     if(status) {
       localStorage.setItem('userToken', access_token);
+      localStorage.setItem('userid', userid);
     } else {
       if(localStorage.userToken) {
         localStorage.removeItem('userToken');
+        localStorage.removeItem('userid');
       }
     }
 
@@ -95,5 +60,9 @@ export class AuthService {
 
   userIsAuthenticated() {
     return this.userAuthenticated;
+  }
+  
+  getAuthenticatedUser() {
+    return parseInt(localStorage.userid);
   }
 }

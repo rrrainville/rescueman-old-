@@ -35,8 +35,8 @@ class CreateAnimalsTable extends Migration
             $table->string('microchipid');
             $table->string('rabbiesid');
             $table->string('detais');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

@@ -1,6 +1,10 @@
 import { Router } from '@angular/router';
-import { AuthService } from './../security/auth.service';
 import { Component, OnInit } from '@angular/core';
+
+import { User } from '../shared/models/user';
+
+import { AuthService } from '../shared/controllers/auth.service';
+import { UsersService } from '../shared/controllers/users.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,16 +16,23 @@ export class NavBarComponent implements OnInit {
   title = 'Rescue Management';
 
   showMenu: boolean = false;
+  authenticatedUser: User = new User();
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private usersService: UsersService
   ) { }
 
   ngOnInit() {
     this.authService.showMenuEmitter.subscribe(
-      show => this.showMenu = show
-    );
+      show => {
+        this.showMenu = show
+
+        if(this.showMenu) {
+          this.getUserDetails();
+        }
+      });
   }
 
   Logout() {
@@ -30,5 +41,19 @@ export class NavBarComponent implements OnInit {
     this.authService.doLogout();
 
     this.router.navigate(['/login']);
+  }
+
+  getUserDetails() {
+    console.log("UserDetails");
+
+    if(localStorage.userid) {
+      this.usersService.get(localStorage.userid)
+        .subscribe(data => {
+          this.authenticatedUser = data;
+
+          //console.log(data);
+          console.log(this.authenticatedUser);
+        });
+    }   
   }
 }

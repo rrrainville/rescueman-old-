@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable($value = true);
             $table->integer('role_id')->nullable($value = true);
             $table->integer('organization_id')->nullable($value = true);
+            $table->integer('created_by');
+            $table->integer('updated_by');
+            $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });
     }

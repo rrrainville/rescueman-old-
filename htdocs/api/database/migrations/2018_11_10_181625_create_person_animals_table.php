@@ -18,8 +18,8 @@ class CreatePersonAnimalsTable extends Migration
             $table->integer('contact_id');
             $table->integer('animal_id');
             $table->string('role');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

@@ -1,4 +1,4 @@
-import { AuthService } from './../security/auth.service';
+import { AuthService } from '../shared/controllers/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

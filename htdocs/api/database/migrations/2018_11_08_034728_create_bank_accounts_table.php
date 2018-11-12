@@ -19,8 +19,8 @@ class CreateBankAccountsTable extends Migration
             $table->string('number');
             $table->decimal('balance', 8, 2);
             $table->text('description');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

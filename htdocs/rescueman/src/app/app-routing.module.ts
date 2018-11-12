@@ -34,6 +34,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './security/login/login.component';
+import { UserComponent } from './admin/users/user/user.component';
+import { OrganizationComponent } from './admin/organizations/organization/organization.component';
+import { ReportComponent } from './admin/reports/report/report.component';
+import { SecurityroleComponent } from './admin/securityroles/securityrole/securityrole.component';
 
 const routes: Routes = [
   { path: 'animals', component: AnimalsComponent, canActivate: [AuthGuard] },
@@ -60,10 +64,15 @@ const routes: Routes = [
   { path: 'finance/payment/:id', component: PaymentComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'admin/users/:id', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'admin/documents', component: DocumentsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/documents/:id', component: DocumentsComponent, canActivate: [AuthGuard] },
   { path: 'admin/organizations', component: OrganizationsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/organizations/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
   { path: 'admin/reports', component: ReportsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/reports/:id', component: ReportComponent, canActivate: [AuthGuard] },
   { path: 'admin/securityroles', component: SecurityrolesComponent, canActivate: [AuthGuard] },
+  { path: 'admin/securityroles/:id', component: SecurityroleComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'forgot', component: ForgetPasswordComponent },

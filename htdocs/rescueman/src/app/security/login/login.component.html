@@ -4,20 +4,28 @@
   </div>
   <div class="card-body" [formGroup]="formLogin">
     <div class="form-group">
-      <label for="user">Email address</label>
-      <input [(ngModel)]="user.name" type="email" class="form-control" id="user" aria-describedby="emailHelp"
-        placeholder="Enter email">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="name@email.com"
+        formControlName="email" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input [(ngModel)]="user.password" type="password" class="form-control" id="password" placeholder="Password">
+      <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+      <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password must be at least 4 characters</div>
+      </div>
     </div>
     <div class="row">
       <div class="col">
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+          <input type="checkbox" class="form-check-input" formControlName="rememberme">
+          <label class="form-check-label" for="rememberme">Remember Me</label>
         </div>
       </div>
       <div class="col text-right">

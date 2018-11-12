@@ -35,8 +35,8 @@ class CreatePeoplesTable extends Migration
             $table->boolean('adopter_unfit');
             $table->boolean('adopter_contract');
             $table->string('adopter_home_inspected_by');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

@@ -49,9 +49,17 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/admin/users', authenticatedUser.id]">
+              <span class="fa fa-user"></span> {{ authenticatedUser.name }}</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
             <a class="nav-link" (click)="Logout()">
               <span class="fa fa-sign-out"></span> Logout</a>
           </li>
         </ul>
+
+        
     </div>
   </div>

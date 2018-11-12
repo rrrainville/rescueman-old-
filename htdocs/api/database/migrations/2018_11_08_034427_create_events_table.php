@@ -22,8 +22,8 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->string('services');
             $table->string('status');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

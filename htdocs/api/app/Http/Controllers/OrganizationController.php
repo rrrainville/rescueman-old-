@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class OrganizationController extends Controller
 {
 
-    public function showAllOrganizations()
+    public function getAll()
     {
         return response()->json(Organization::all());
     }
 
-    public function showOneOrganization($id)
+    public function get($id)
     {
         return response()->json(Organization::find($id));
     }

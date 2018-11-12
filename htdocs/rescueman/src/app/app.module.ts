@@ -1,5 +1,5 @@
 import { AuthGuard } from './guards/auth.guard';
-import { AuthService } from './security/auth.service';
+import { AuthService } from './shared/controllers/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

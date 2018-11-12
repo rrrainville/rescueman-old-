@@ -25,6 +25,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         ]
     );
 
+    /*
     $router->group(
         ['middleware' => 'jwt.auth'], 
         function() use ($router) {
@@ -36,13 +37,24 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             
         }
     );    
+    */
+
+    /*
+	Model: User
+	Controller: UserController
+    */
+    $router->get('users',  ['uses' => 'UserController@getAll']);    
+    $router->get('users/{id}', ['uses' => 'UserController@get']);
+    $router->post('users', ['uses' => 'UserController@create']);
+    $router->delete('users/{id}', ['uses' => 'UserController@delete']);
+    $router->put('users/{id}', ['uses' => 'UserController@update']);
 
     /*
 	Model: Organization
 	Controller: OrganizationController
     */
-    $router->get('organizations',  ['uses' => 'OrganizationController@showAllOrganizations']);    
-    $router->get('organizations/{id}', ['uses' => 'OrganizationController@showOneOrganization']);
+    $router->get('organizations',  ['uses' => 'OrganizationController@getAll']);    
+    $router->get('organizations/{id}', ['uses' => 'OrganizationController@get']);
     $router->post('organizations', ['uses' => 'OrganizationController@create']);
     $router->delete('organizations/{id}', ['uses' => 'OrganizationController@delete']);
     $router->put('organizations/{id}', ['uses' => 'OrganizationController@update']);

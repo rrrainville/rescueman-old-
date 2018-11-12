@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from './../auth.service';
-import { User } from './../user';
+import { User } from '../../shared/models/user';
+import { UsersService } from 'src/app/shared/controllers/users.service';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +12,12 @@ export class RegisterComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(private authService: AuthService) { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
   }
 
   doSignUp() {
-    this.authService.doSignUp(this.user);
+    this.usersService.create(this.user);
   }
 }

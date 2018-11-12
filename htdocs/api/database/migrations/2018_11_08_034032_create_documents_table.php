@@ -18,8 +18,8 @@ class CreateDocumentsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('location');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

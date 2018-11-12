@@ -21,8 +21,8 @@ class CreateEmailsTable extends Migration
             $table->dateTime('due_date');
             $table->text('description');
             $table->string('status');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });

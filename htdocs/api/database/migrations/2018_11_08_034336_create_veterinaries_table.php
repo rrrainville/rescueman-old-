@@ -23,8 +23,8 @@ class CreateVeterinariesTable extends Migration
             $table->string('street_line_2');
             $table->string('state_prov');
             $table->string('postal_code');
-            $table->string('created_by');
-            $table->string('updated_by');
+            $table->integer('created_by');
+            $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
             $table->timestamps();
         });
