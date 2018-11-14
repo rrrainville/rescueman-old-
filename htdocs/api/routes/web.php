@@ -195,6 +195,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     */
     $router->get('securityroles',  ['uses' => 'SecurityRoleController@getAll']);    
     $router->get('securityroles/{id}', ['uses' => 'SecurityRoleController@get']);
+    $router->get('securityroles/{id}/users', ['uses' => 'SecurityRoleController@getUsersBySecurityRole']);
     $router->post('securityroles', ['uses' => 'SecurityRoleController@create']);
     $router->delete('securityroles/{id}', ['uses' => 'SecurityRoleController@delete']);
     $router->put('securityroles/{id}', ['uses' => 'SecurityRoleController@update']);

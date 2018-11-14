@@ -4,7 +4,7 @@ import { VetvisitsComponent } from './activities/vetvisits/vetvisits.component';
 import { PhonecallsComponent } from './activities/phonecalls/phonecalls.component';
 import { EmailsComponent } from './activities/emails/emails.component';
 import { AppointmentsComponent } from './activities/appointments/appointments.component';
-import { SecurityrolesComponent } from './admin/securityroles/securityroles.component';
+import { SecurityRolesComponent } from './admin/securityroles/securityroles.component';
 import { ReportsComponent } from './admin/reports/reports.component';
 import { OrganizationsComponent } from './admin/organizations/organizations.component';
 import { DocumentsComponent } from './admin/documents/documents.component';
@@ -37,7 +37,7 @@ import { LoginComponent } from './security/login/login.component';
 import { UserComponent } from './admin/users/user/user.component';
 import { OrganizationComponent } from './admin/organizations/organization/organization.component';
 import { ReportComponent } from './admin/reports/report/report.component';
-import { SecurityroleComponent } from './admin/securityroles/securityrole/securityrole.component';
+import { SecurityRoleComponent } from './admin/securityroles/securityrole/securityrole.component';
 
 const routes: Routes = [
   { path: 'animals', component: AnimalsComponent, canActivate: [AuthGuard] },
@@ -71,8 +71,8 @@ const routes: Routes = [
   { path: 'admin/organizations/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
   { path: 'admin/reports', component: ReportsComponent, canActivate: [AuthGuard] },
   { path: 'admin/reports/:id', component: ReportComponent, canActivate: [AuthGuard] },
-  { path: 'admin/securityroles', component: SecurityrolesComponent, canActivate: [AuthGuard] },
-  { path: 'admin/securityroles/:id', component: SecurityroleComponent, canActivate: [AuthGuard] },
+  { path: 'admin/securityroles', component: SecurityRolesComponent, canActivate: [AuthGuard] },
+  { path: 'admin/securityroles/:id', component: SecurityRoleComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'forgot', component: ForgetPasswordComponent },

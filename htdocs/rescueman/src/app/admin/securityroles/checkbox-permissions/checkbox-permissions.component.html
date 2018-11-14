@@ -1,0 +1,28 @@
+<table class="table table-responsive-sm table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Create <input type="checkbox" (change)="checkAll($event, 'c')"></th>
+      <th>Read <input type="checkbox" (change)="checkAll($event, 'r')"></th>
+      <th>Write <input type="checkbox" (change)="checkAll($event, 'w')"></th>
+      <th>Delete <input type="checkbox" (change)="checkAll($event, 'd')"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of options">
+      <td>{{item.label}}</td>
+      <td>
+        <input type="checkbox" [(ngModel)]="item.create" (change)="onToggle()">
+      </td>
+      <td>
+          <input type="checkbox" [(ngModel)]="item.read" (change)="onToggle()">
+      </td>
+      <td>
+          <input type="checkbox" [(ngModel)]="item.write" (change)="onToggle()">
+      </td>
+      <td>
+          <input type="checkbox" [(ngModel)]="item.remove" (change)="onToggle()">
+      </td>
+    </tr>
+  </tbody>
+</table>

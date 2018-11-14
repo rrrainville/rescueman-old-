@@ -7,6 +7,8 @@ import { UsersService } from 'src/app/shared/controllers/users.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/controllers/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SecurityRolesService } from 'src/app/shared/controllers/securityroles.service';
+import { SecurityRole } from 'src/app/shared/models/securityrole';
 
 @Component({
   selector: 'app-user',
@@ -22,12 +24,15 @@ export class UserComponent implements OnInit {
 
   user: User = new User();
 
+  securityRoles: SecurityRole;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authService: AuthService,
+    private securityRolesService:  SecurityRolesService,
     private usersService: UsersService
   ) { }
 
@@ -35,6 +40,12 @@ export class UserComponent implements OnInit {
     this.initFormData();
 
     console.log(this.route);
+
+    this.securityRolesService.getAll()
+      .subscribe(
+        data => {
+          this.securityRoles = data;
+        });
 
     this.formSubscription = this.route.params.subscribe(
       (params: any) => {
@@ -76,7 +87,7 @@ export class UserComponent implements OnInit {
       if(status == 'active')
         control.enable();
       else
-      control.disable();
+        control.disable();
     }
 
     //console.log(this.formUser.controls);
@@ -155,12 +166,14 @@ export class UserComponent implements OnInit {
   saveForm() {
     console.log('saveForm Login');
 
-    debugger;
+    // debugger;
 
     if(this.formUser.invalid)
       return;
 
     if(this.f.id == null) {
+      // this.formUser.removeControl('id');
+
       this.usersService.create(this.formUser.value)
         .subscribe(data => { 
           console.log(data);

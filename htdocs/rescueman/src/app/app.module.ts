@@ -24,7 +24,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { OrganizationsComponent } from './admin/organizations/organizations.component';
 import { DocumentsComponent } from './admin/documents/documents.component';
 import { ReportsComponent } from './admin/reports/reports.component';
-import { SecurityrolesComponent } from './admin/securityroles/securityroles.component';
+import { SecurityRolesComponent } from './admin/securityroles/securityroles.component';
 import { PaymentComponent } from './finance/payment/payment.component';
 import { ReceivableComponent } from './finance/receivable/receivable.component';
 import { TransferComponent } from './finance/transfer/transfer.component';
@@ -36,7 +36,7 @@ import { PersonComponent } from './people/person/person.component';
 import { AnimalComponent } from './animals/animal/animal.component';
 import { OrganizationComponent } from './admin/organizations/organization/organization.component';
 import { ReportComponent } from './admin/reports/report/report.component';
-import { SecurityroleComponent } from './admin/securityroles/securityrole/securityrole.component';
+import { SecurityRoleComponent } from './admin/securityroles/securityrole/securityrole.component';
 import { UserComponent } from './admin/users/user/user.component';
 import { AppointmentsComponent } from './activities/appointments/appointments.component';
 import { AppointmentComponent } from './activities/appointments/appointment/appointment.component';
@@ -62,7 +62,13 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
+
 import { FormDebugComponent } from './shared/form-debug/form-debug.component';
+
+import { GrdFilterPipe } from './shared/pipes/grd-filter.pipe';
+import { CheckboxGroupComponent } from './shared/checkbox-group/checkbox-group.component';
+import { CheckboxPermissionsComponent } from './admin/securityroles/checkbox-permissions/checkbox-permissions.component';
+import { UsersGridComponent } from './admin/users/users-grid/users-grid.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +85,7 @@ import { FormDebugComponent } from './shared/form-debug/form-debug.component';
     OrganizationsComponent,
     DocumentsComponent,
     ReportsComponent,
-    SecurityrolesComponent,
+    SecurityRolesComponent,
     PaymentComponent,
     ReceivableComponent,
     TransferComponent,
@@ -91,7 +97,7 @@ import { FormDebugComponent } from './shared/form-debug/form-debug.component';
     AnimalComponent,
     OrganizationComponent,
     ReportComponent,
-    SecurityroleComponent,
+    SecurityRoleComponent,
     UserComponent,
     AppointmentsComponent,
     AppointmentComponent,
@@ -113,7 +119,11 @@ import { FormDebugComponent } from './shared/form-debug/form-debug.component';
     RegisterComponent,
     NavBarComponent,
     FooterComponent,
-    FormDebugComponent
+    FormDebugComponent,
+    GrdFilterPipe,
+    CheckboxGroupComponent,
+    CheckboxPermissionsComponent,
+    UsersGridComponent
   ],
   imports: [
     BrowserModule,

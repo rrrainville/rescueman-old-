@@ -17,9 +17,9 @@ class CreateOrganizationsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
-            $table->string('website');
+            $table->string('website')->nullable($value = true);
             $table->string('phone');
-            $table->text('address');
+            $table->text('address')->nullable($value = true);
 			$table->integer('created_by');
             $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);

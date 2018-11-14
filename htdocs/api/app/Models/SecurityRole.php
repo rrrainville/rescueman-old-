@@ -13,7 +13,9 @@ class SecurityRole extends Model {
      */
     protected $fillable = [
         'name',
-        'description', 'created_by', 'updated_by', 'statecode'
+        'description', 
+        'permissions',
+        'created_by', 'updated_by', 'statecode'
     ];
 
     protected $table = 'security_roles';   

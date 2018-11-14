@@ -58,7 +58,7 @@ class AuthController extends BaseController
         //error_log($this->request);
 
         // Find the user by email
-        $user = User::where('email', $this->request->input('email'))->first();
+        $user = User::where('email', $this->request->input('email'))->where('statecode', 'active')->first();
         if (!$user) {
             // You wil probably have some sort of helpers or whatever
             // to make sure that you have the same response format for

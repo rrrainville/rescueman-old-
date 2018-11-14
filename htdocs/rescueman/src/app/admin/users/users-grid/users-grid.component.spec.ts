@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SecurityRolesComponent } from './securityroles.component';
+import { UsersGridComponent } from './users-grid.component';
 
-describe('SecurityRolesComponent', () => {
-  let component: SecurityRolesComponent;
-  let fixture: ComponentFixture<SecurityRolesComponent>;
+describe('UsersGridComponent', () => {
+  let component: UsersGridComponent;
+  let fixture: ComponentFixture<UsersGridComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SecurityRolesComponent ]
+      declarations: [ UsersGridComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SecurityRolesComponent);
+    fixture = TestBed.createComponent(UsersGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\SecurityRole;
+use App\User;
+
 use Illuminate\Http\Request;
 
 class SecurityRoleController extends Controller
@@ -21,6 +23,7 @@ class SecurityRoleController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
+            'name' => 'required',
             'statecode' => 'required', 
             'created_by' => 'required', 
             'updated_by' => 'required'
@@ -43,5 +46,12 @@ class SecurityRoleController extends Controller
     {
         SecurityRole::findOrFail($id)->delete();
         return response('Deleted Successfully', 200);
+    }
+
+    public function getUsersBySecurityRole($id)
+    {
+        $users = User::where('role_id', $id)->get();
+        
+        return response()->json($users);
     }
 }

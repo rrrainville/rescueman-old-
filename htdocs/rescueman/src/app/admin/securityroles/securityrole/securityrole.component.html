@@ -1,3 +1,99 @@
-<p>
-  securityrole works!
-</p>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin']">Admin Console</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/admin/securityroles']">Security Roles</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ id }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-8">
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary" title="Save" (click)="saveForm()">
+          <i class="fa fa-floppy-o"></i> Save</button>
+        <button type="button" class="btn btn-outline-secondary" title="New" (click)="resetForm()">
+          <i class="fa fa-plus"></i> New</button>
+        <button type="button" class="btn btn-outline-secondary" title="{{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}"
+          (click)="inactivateRecord()">
+          <i class="fa fa-trash"></i> {{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}</button>
+        <button type="button" class="btn btn-outline-secondary" title="Print" (click)="printForm()">
+          <i class="fa fa-print"></i> Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-lg-12">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-shield"></i> Security Role Information
+      </div>
+      <div class="card-body">
+        <div [formGroup]="formSecurityRole">
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Name" aria-label="Name" formControlName="name"
+                [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }">
+              <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="3" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-lg-12">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-lock"></i> Permissions
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col col-md-12">
+            <app-checkbox-permissions [options]="permissions" (toggle)="onEntityCheck($event)"></app-checkbox-permissions>            
+          </div>
+        </div>       
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-lg-12">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-user"></i> Users
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col col-md-12">
+            <app-users-grid [allItems]="usersByRole"></app-users-grid>
+          </div>
+        </div>       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <app-checkbox-group [options]="entities" (toggle)="onEntityCheck($event)"></app-checkbox-group> -->
+
+<app-form-debug [form]="formSecurityRole"></app-form-debug>

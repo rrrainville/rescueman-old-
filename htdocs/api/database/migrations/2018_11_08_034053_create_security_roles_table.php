@@ -16,7 +16,8 @@ class CreateSecurityRolesTable extends Migration
         Schema::create('security_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
+            $table->text('description')->nullable($value = true);
+            $table->text('permissions')->nullable($value = true);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
