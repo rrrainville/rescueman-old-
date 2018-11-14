@@ -12,7 +12,7 @@ class Note extends Model {
      * @var array
      */
     protected $fillable = [
-        'body', 'created_by', 'updated_by', 'statecode'
+        'body', 'related_entity', 'related_id', 'created_by', 'updated_by', 'statecode'
     ];
 
     protected $table = 'notes';   

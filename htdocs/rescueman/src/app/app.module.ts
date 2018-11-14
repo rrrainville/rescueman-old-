@@ -35,7 +35,6 @@ import { VetComponent } from './vets/vet/vet.component';
 import { PersonComponent } from './people/person/person.component';
 import { AnimalComponent } from './animals/animal/animal.component';
 import { OrganizationComponent } from './admin/organizations/organization/organization.component';
-import { ReportComponent } from './admin/reports/report/report.component';
 import { SecurityRoleComponent } from './admin/securityroles/securityrole/securityrole.component';
 import { UserComponent } from './admin/users/user/user.component';
 import { AppointmentsComponent } from './activities/appointments/appointments.component';
@@ -96,7 +95,6 @@ import { UsersGridComponent } from './admin/users/users-grid/users-grid.componen
     PersonComponent,
     AnimalComponent,
     OrganizationComponent,
-    ReportComponent,
     SecurityRoleComponent,
     UserComponent,
     AppointmentsComponent,

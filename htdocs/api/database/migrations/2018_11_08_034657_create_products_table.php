@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('type');
             $table->string('serial');
             $table->integer('quantity');
+            $table->integer('available');
             $table->string('description');
             $table->text('notes');
             $table->integer('created_by');

@@ -17,6 +17,7 @@ class CreateReportsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
+            $table->string('description');
             $table->text('query');
             $table->integer('created_by');
             $table->integer('updated_by');

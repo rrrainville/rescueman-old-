@@ -19,8 +19,8 @@
               <div class="col col-md-4 pull-left">
                 <div class="btn-toolbar" role="toolbar" aria-label="...">
                   <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-outline-secondary" title="New" ng-click="go('/vet/new')">
-                      <i class="fa fa-plus"></i> New</button>
+                    <!-- <button type="button" class="btn btn-outline-secondary" title="New" [routerLink]="['/admin/reports/new']">
+                      <i class="fa fa-plus"></i> New</button> -->
                     <button type="button" class="btn btn-outline-secondary" title="Print List">
                       <i class="fa fa-print"></i> Print</button>
                     <button type="button" class="btn btn-outline-secondary" title="Export List">
@@ -34,11 +34,12 @@
               <div class="col-sm-12 col-md-6">
                 <div class="form-inline">
                   <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Show</label>
-                  <select class="custom-select custom-select-sm form-control form-control-sm my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                    <option value="10" selected>10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
+                  <select class="custom-select custom-select-sm form-control form-control-sm my-1 mr-sm-2" id="inlineFormCustomSelectPref"
+                    (change)="setPageSize($event)">
+                    <option value="10" [ngClass]="{selected: pageSize === 10}">10</option>
+                    <option value="25" [ngClass]="{selected: pageSize === 25}">25</option>
+                    <option value="50" [ngClass]="{selected: pageSize === 50}">50</option>
+                    <option value="100" [ngClass]="{selected: pageSize === 100}">100</option>
                   </select>
                   <label class="my-1 mr-2" for="inlineFormCustomSelectPref">entries</label>
                 </div>
@@ -46,12 +47,11 @@
 
               <div class="col-sm-12 col-md-6">
                 <div class="form-inline  justify-content-end">
-                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Search:</label>
-                  <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
+                  <label class="my-1 mr-2" for="searchText">Search:</label>
+                  <input type="search" id="searchText" name="searchText" class="form-control form-control-sm"
+                    placeholder="search..." aria-controls="dataTable" [(ngModel)]="searchText">
                 </div>
               </div>
-
-
             </div>
 
             <div class="row">
@@ -59,178 +59,22 @@
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Description</th>
                     <th>Report Type</th>
-                    <th>Modification Date</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Adoptions per Month </td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
+                  <tr *ngFor="let item of pagedItems | grdFilter: {name: searchText, description: searchText, type: searchText}; let i = index;">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.type }}</td>
                     <td>
                       <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Adopted Animals with Missed and Upcoming Visits</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Animals Added In Last 14 Days</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Animals Adopted Per Month</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Animals with Adopters</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Total Costs By Animal</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Total Costs By Date</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Adopters with Outstanding Fees</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Fosters</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>People with Vet Skills</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Inventory in Storage</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Upcoming and Past Events</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Vet Visits</td>
-                    <td>Adminstrative</td>
-                    <td>28/03/2018 02:00 PM</td>
-                    <td>
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-print"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-download"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-print" (click)="printItem(item.id)"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-download" (click)="downloadItem(item.id)"></button>
+                        <button type="button" class="btn btn-outline-secondary fa fa-edit" [routerLink]="['/admin/reports', item.id]"></button>
+                        <button type="button" class="btn btn-outline-danger fa fa-trash-o" (click)="disableItem(item.id)"></button>
                       </div>
                     </td>
                   </tr>
@@ -239,25 +83,32 @@
             </div>
 
             <div class="row">
-              <div class="col-sm-12 col-md-6">
-                Showing 1 to 10 of 57 entries
+              <div class="col-sm-12 col-md-6" *ngIf="pager.pages && pager.pages.length">
+                Showing {{ pager.startIndex + 1 }} to {{ pager.endIndex + 1 }} of {{ pager.totalItems }} entries
               </div>
               <div class="col-sm-12 col-md-6">
                 <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1">Previous</a>
+                  <ul class="pagination justify-content-end" *ngIf="pager.pages && pager.pages.length">
+                    <li class="page-item" [ngClass]="{disabled: pager.currentPage === 1}">
+                      <a class="page-link" (click)="setPage(1)"><i class="fa fa-fast-backward"></i></a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
+                    <li class="page-item" [ngClass]="{disabled: pager.currentPage === 1}">
+                      <a class="page-link" (click)="setPage(pager.currentPage - 1)"><i class="fa fa-backward"></i></a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active: pager.currentPage === page}">
+                      <a class="page-link" (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled: pager.currentPage === pager.totalPages}">
+                      <a class="page-link" (click)="setPage(pager.currentPage + 1)"><i class="fa fa-forward"></i></a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled: pager.currentPage === pager.totalPages}">
+                      <a class="page-link" (click)="setPage(pager.totalPages)"><i class="fa fa-fast-forward"></i></a>
                     </li>
                   </ul>
                 </nav>
               </div>
             </div>
+
           </div>
         </div>
       </div>

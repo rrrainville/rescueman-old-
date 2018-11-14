@@ -18,6 +18,13 @@ class NoteController extends Controller
         return response()->json(Note::find($id));
     }
 
+    public function getAssignedNotes($entity, $id)
+    {
+        $notes = Note::where('related_entity', $entity)->where('related_id', $id)->get();
+
+        return response()->json($notes);
+    }
+
     public function create(Request $request)
     {
         $this->validate($request, [

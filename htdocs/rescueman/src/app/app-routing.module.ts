@@ -1,23 +1,40 @@
+//Angular
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+//Admin
+import { AdminComponent } from './admin/admin.component';
+import { SecurityRolesComponent } from './admin/securityroles/securityroles.component';
+import { ReportsComponent } from './admin/reports/reports.component';
+import { OrganizationsComponent } from './admin/organizations/organizations.component';
+import { DocumentsComponent } from './admin/documents/documents.component';
+import { UsersComponent } from './admin/users/users.component';
+import { UserComponent } from './admin/users/user/user.component';
+import { OrganizationComponent } from './admin/organizations/organization/organization.component';
+import { SecurityRoleComponent } from './admin/securityroles/securityrole/securityrole.component';
+
+//Activities
 import { TasksComponent } from './activities/tasks/tasks.component';
 import { TransportsComponent } from './activities/transports/transports.component';
 import { VetvisitsComponent } from './activities/vetvisits/vetvisits.component';
 import { PhonecallsComponent } from './activities/phonecalls/phonecalls.component';
 import { EmailsComponent } from './activities/emails/emails.component';
 import { AppointmentsComponent } from './activities/appointments/appointments.component';
-import { SecurityRolesComponent } from './admin/securityroles/securityroles.component';
-import { ReportsComponent } from './admin/reports/reports.component';
-import { OrganizationsComponent } from './admin/organizations/organizations.component';
-import { DocumentsComponent } from './admin/documents/documents.component';
-import { UsersComponent } from './admin/users/users.component';
+import { EventsComponent } from './activities/events/events.component';
+
+//Finance
 import { AccountComponent } from './finance/accounts/account/account.component';
 import { AccountsComponent } from './finance/accounts/accounts.component';
-import { RegisterComponent } from './security/register/register.component';
-import { ForgetPasswordComponent } from './security/forget-password/forget-password.component';
-import { AuthGuard } from './guards/auth.guard';
-import { EventsComponent } from './activities/events/events.component';
-import { TransferComponent } from './finance/transfer/transfer.component';
 import { ReceivableComponent } from './finance/receivable/receivable.component';
 import { PaymentComponent } from './finance/payment/payment.component';
+import { TransferComponent } from './finance/transfer/transfer.component';
+
+//Security
+import { RegisterComponent } from './security/register/register.component';
+import { ForgetPasswordComponent } from './security/forget-password/forget-password.component';
+import { LoginComponent } from './security/login/login.component';
+
+import { AuthGuard } from './guards/auth.guard';
 import { VetComponent } from './vets/vet/vet.component';
 import { ProductComponent } from './inventory/product/product.component';
 import { PersonComponent } from './people/person/person.component';
@@ -27,19 +44,21 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { VetsComponent } from './vets/vets.component';
 import { PeopleComponent } from './people/people.component';
-import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AnimalsComponent } from './animals/animals.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginComponent } from './security/login/login.component';
-import { UserComponent } from './admin/users/user/user.component';
-import { OrganizationComponent } from './admin/organizations/organization/organization.component';
-import { ReportComponent } from './admin/reports/report/report.component';
-import { SecurityRoleComponent } from './admin/securityroles/securityrole/securityrole.component';
 
 const routes: Routes = [
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard] },
+  { path: 'admin/users/:id', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'admin/documents', component: DocumentsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/organizations', component: OrganizationsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/organizations/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
+  { path: 'admin/reports', component: ReportsComponent, canActivate: [AuthGuard] },
+  { path: 'admin/securityroles', component: SecurityRolesComponent, canActivate: [AuthGuard] },
+  { path: 'admin/securityroles/:id', component: SecurityRoleComponent, canActivate: [AuthGuard] },
   { path: 'animals', component: AnimalsComponent, canActivate: [AuthGuard] },
   { path: 'animals/:id', component: AnimalComponent, canActivate: [AuthGuard] },
   { path: 'people', component: PeopleComponent, canActivate: [AuthGuard] },
@@ -62,17 +81,6 @@ const routes: Routes = [
   { path: 'finance/transfer/:id', component: TransferComponent, canActivate: [AuthGuard] },
   { path: 'finance/deposit/:id', component: ReceivableComponent, canActivate: [AuthGuard] },
   { path: 'finance/payment/:id', component: PaymentComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-  { path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard] },
-  { path: 'admin/users/:id', component: UserComponent, canActivate: [AuthGuard] },
-  { path: 'admin/documents', component: DocumentsComponent, canActivate: [AuthGuard] },
-  { path: 'admin/documents/:id', component: DocumentsComponent, canActivate: [AuthGuard] },
-  { path: 'admin/organizations', component: OrganizationsComponent, canActivate: [AuthGuard] },
-  { path: 'admin/organizations/:id', component: OrganizationComponent, canActivate: [AuthGuard] },
-  { path: 'admin/reports', component: ReportsComponent, canActivate: [AuthGuard] },
-  { path: 'admin/reports/:id', component: ReportComponent, canActivate: [AuthGuard] },
-  { path: 'admin/securityroles', component: SecurityRolesComponent, canActivate: [AuthGuard] },
-  { path: 'admin/securityroles/:id', component: SecurityRoleComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'forgot', component: ForgetPasswordComponent },
