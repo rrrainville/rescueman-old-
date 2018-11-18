@@ -1,3 +1,129 @@
-<p>
-  product works!
-</p>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/inventory']">Inventory</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ id }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-8">
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary" title="Save" (click)="saveForm()">
+          <i class="fa fa-floppy-o"></i> Save</button>
+        <button type="button" class="btn btn-outline-secondary" title="New" (click)="resetForm()">
+          <i class="fa fa-plus"></i> New</button>
+        <button type="button" class="btn btn-outline-secondary" title="{{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}"
+          (click)="inactivateRecord()">
+          <i class="fa fa-trash"></i> {{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}</button>
+        <button type="button" class="btn btn-outline-secondary" title="Print" (click)="printForm()">
+          <i class="fa fa-print"></i> Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-8">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-archive"></i> Product Information
+      </div>
+      <div class="card-body">
+        <div [formGroup]="formProduct">
+          <div class="form-group row">
+            <div class="col col-md-12">
+              <label class="col-form-label">Name</label>
+              <input type="text" class="form-control" placeholder="Name" aria-label="Name" formControlName="name"
+                [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }">
+              <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label class="col-form-label">Type</label>
+              <input type="text" class="form-control" placeholder="e.g. leash, collar, bowl" aria-label="Type"
+                formControlName="type">
+            </div>
+            <div class="col col-md-6">
+              <label class="col-form-label">Serial</label>
+              <input type="text" class="form-control" placeholder="Serial #" aria-label="Serial" formControlName="serial">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label class="col-form-label">Quantity</label>
+              <input type="text" class="form-control" placeholder="Quantity" aria-label="Quantity" formControlName="quantity">
+            </div>
+            <div class="col col-md-6">
+              <label class="col-form-label">Avalable</label>
+              <input type="text" class="form-control" placeholder="Avalable" aria-label="Avalable" formControlName="available">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col col-md-12">
+              <label for="inputName" class="col-form-label">Description</label>
+              <textarea class="form-control" rows="3" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-shopping-basket"></i> In Use
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col col-md-8 pull-left">
+            <div class="btn-toolbar" role="toolbar" aria-label="...">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary" title="New" (click)="assignProduct()">
+                  <i class="fa fa-plus"></i> Assign</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-responsive-sm table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Date Assigned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Roger Rainville</td>
+                <td>(123) 456-7686</td>
+                <td>28/03/2018</td>
+                <td style="width:140px">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-outline-secondary fa fa-check-square-o"></button>
+                    <button type="button" class="btn btn-outline-danger fa fa-times-circle-o"></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <app-notes-record [entityname]="entityname" [recordid]="f.id.value" [created_by]="f.updated_by.value"></app-notes-record>
+  </div>
+</div>
+
+<app-search-entity-box></app-search-entity-box>
+
+<app-form-debug [form]="formProduct"></app-form-debug>

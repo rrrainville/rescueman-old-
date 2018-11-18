@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { CheckboxItem } from '../models/checkbox-item';
 
 @Component({
-  selector: 'app-checkbox-group',
+  selector: 'checkbox-group',
   templateUrl: './checkbox-group.component.html',
   styleUrls: ['./checkbox-group.component.scss']
 })
-export class CheckboxGroupComponent implements OnInit {
+export class CheckboxGroupComponent implements OnInit, OnChanges {
 
   @Input() options = Array<CheckboxItem>();
   @Input() selectedValues: string[];
@@ -15,6 +15,17 @@ export class CheckboxGroupComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    if(this.selectedValues) {
+      this.selectedValues.forEach(value => {
+        const element = this.options.find(x => x.value === value);
+        if (element) {
+          element.checked = true;
+        }
+      });
+    }
   }
 
   onToggle() {

@@ -6,43 +6,43 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/" title="Dashboard">
+          <li class="nav-item" >
+            <a class="nav-link" [routerLink]="['/dashboard']" title="Dashboard" [routerLinkActive]="'active'">
               <i class="fa fa-home fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/animals" title="Animals">
+            <a class="nav-link" [routerLink]="['/animals']" title="Animals" [routerLinkActive]="'active'">
               <i class="fa fa-paw fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/people']" title="People">
+            <a class="nav-link" [routerLink]="['/people']" title="People" [routerLinkActive]="'active'">
               <i class="fa fa-address-card-o fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/vets']" title="Veterinary">
+            <a class="nav-link" [routerLink]="['/vets']" title="Veterinary" [routerLinkActive]="'active'">
               <i class="fa fa-medkit fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/activities']" title="Activities">
+            <a class="nav-link" [routerLink]="['/activities']" title="Activities" [routerLinkActive]="'active'">
               <i class="fa fa-calendar fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/inventory']" title="Inventory">
+            <a class="nav-link" [routerLink]="['/inventory']" title="Inventory" [routerLinkActive]="'active'">
               <i class="fa fa-archive fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/finance']" title="Finances">
+            <a class="nav-link" [routerLink]="['/finance']" title="Finances" [routerLinkActive]="'active'">
               <i class="fa fa-money fa-2x"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/admin']" title="Settings">
+            <a class="nav-link" [routerLink]="['/admin']" title="Settings" [routerLinkActive]="'active'">
               <i class="fa fa-cogs fa-2x"></i>
             </a>
           </li>

@@ -109,7 +109,7 @@ export class UserComponent implements OnInit {
     });
   }
 
-  setFormData(data: User) {
+  setFormData(data) {
     this.formUser.patchValue({
       id: data.id,
       name: data.name,
@@ -171,13 +171,15 @@ export class UserComponent implements OnInit {
     if(this.formUser.invalid)
       return;
 
-    if(this.f.id == null) {
+    if(this.f.id.value == null) {
       // this.formUser.removeControl('id');
 
       this.usersService.create(this.formUser.value)
         .subscribe(data => { 
           console.log(data);
 
+          this.setFormData(data);
+          
           this.toastr.success('User has been created!')
         },
         (err: HttpErrorResponse) => {

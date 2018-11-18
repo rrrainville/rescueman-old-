@@ -21,6 +21,7 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
+            'name' => 'required', 
             'statecode' => 'required', 
             'created_by' => 'required', 
             'updated_by' => 'required'

@@ -99,7 +99,7 @@ export class OrganizationComponent implements OnInit {
     });
   }
 
-  setFormData(data: Organization) {
+  setFormData(data) {
     this.formOrganization.patchValue({
       id: data.id,
       name: data.name,
@@ -162,6 +162,8 @@ export class OrganizationComponent implements OnInit {
       this.organizationsService.create(this.formOrganization.value)
         .subscribe(data => { 
           console.log(data);
+
+          this.setFormData(data);
 
           this.toastr.success(`${this.entity} has been created!`)
         },

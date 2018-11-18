@@ -59,21 +59,15 @@
                   <tr>
                     <th>Name</th>
                     <th>Type</th>
-                    <th>Description</th>
-                    <th>Serial</th>
-                    <th>Quantity</th>
                     <th>Available</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of pagedItems | grdFilter: {name: searchText, type: searchText, description: searchText, serial: searchText}; let i = index;">
+                  <tr *ngFor="let item of pagedItems | grdFilter: {name: searchText, type: searchText}; let i = index;">
                     <td>{{ item.name }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.name }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.available }}</td>
                     <td style="width:140px">
                       <div class="btn-group">
                         <!-- <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button> -->

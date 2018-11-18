@@ -184,33 +184,39 @@ export class ListsService {
     },
     'person': {
       'status': ['Active', 'Inactive'],
-      'role': ['Volunteer', 'Adopter', 'Donator', 'Foster', 'Sponsor'],
+      'role': [
+        { 'id': 1, 'name': 'Volunteer', 'icon': 'fa-handshake-o', 'color': 'info' }, 
+        { 'id': 2, 'name': 'Adopter', 'icon': 'fa-life-ring', 'color': 'warning' }, 
+        { 'id': 3, 'name': 'Donator', 'icon': 'fa-money', 'color': 'success' }, 
+        { 'id': 4, 'name': 'Foster', 'icon': 'fa-bed', 'color': 'secondary' }, 
+        { 'id': 5, 'name': 'Sponsor', 'icon': 'fa-credit-card', 'color': 'primary' },
+      ],
       'volunteer': [
-        'Administrative',
-        'Home Inspector',
-        'Pet-sitter',
-        'Events',
-        'Transport',
-        'Support',
-        'Vet Skills',
-        'Reference Caller',
-        'Nail trims',
-        'Fundraiser',
-        'Baker',
-        'Crafter'
+        { 'id': 1, 'name': 'Administrative' },
+        { 'id': 2, 'name': 'Home Inspector' },
+        { 'id': 3, 'name': 'Pet-sitter' },
+        { 'id': 4, 'name': 'Events' },
+        { 'id': 5, 'name': 'Transport' },
+        { 'id': 6, 'name': 'Support' },
+        { 'id': 7, 'name': 'Vet Skills' },
+        { 'id': 8, 'name': 'Reference Caller' },
+        { 'id': 9, 'name': 'Nail trims' },
+        { 'id': 10, 'name': 'Fundraiser' },
+        { 'id': 11, 'name': 'Baker' },
+        { 'id': 12, 'name': 'Crafter' }
       ],
       'foster': [
-        'Has Kids',
-        'Has Vehicle',
-        'Has Allergies',
-        'Has Fenced Yard',
-        'Has Cats',
-        'Has Dogs'
+        { 'id': 1, 'name': 'Has Kids' },
+        { 'id': 2, 'name': 'Has Vehicle' },
+        { 'id': 3, 'name': 'Has Allergies' },
+        { 'id': 4, 'name': 'Has Fenced Yard' },
+        { 'id': 5, 'name': 'Has Cats' },
+        { 'id': 6, 'name': 'Has Dogs' }
       ],
       'canfoster': [
-        'Young Animals (e.g. Puppies, Kittens)',
-        'Small Animals',
-        'Medium/Large Animals'
+        { 'id': 1, 'name': 'Young Animals (e.g. Puppies, Kittens)' },
+        { 'id': 2, 'name': 'Small Animals' },
+        { 'id': 3, 'name': 'Medium/Large Animals' }
       ]
     },
     'vet': {
@@ -262,4 +268,12 @@ export class ListsService {
   };
 
   constructor() { }
+
+  getListByRoot(rootName) {
+    return this.lists[rootName];
+  }
+
+  getListByName(rootName, listName) {
+    return this.lists[rootName][listName];
+  }
 }

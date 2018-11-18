@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { ToastrModule } from 'ngx-toastr';
@@ -68,6 +70,12 @@ import { GrdFilterPipe } from './shared/pipes/grd-filter.pipe';
 import { CheckboxGroupComponent } from './shared/checkbox-group/checkbox-group.component';
 import { CheckboxPermissionsComponent } from './admin/securityroles/checkbox-permissions/checkbox-permissions.component';
 import { UsersGridComponent } from './admin/users/users-grid/users-grid.component';
+import { NotesRecordComponent } from './shared/notes-record/notes-record.component';
+import { AssignProductListComponent } from './inventory/assign-product-list/assign-product-list.component';
+import { SearchEntityBoxComponent } from './shared/search-entity-box/search-entity-box.component';
+import { SearchContactBoxComponent } from './shared/search-contact-box/search-contact-box.component';
+import { SearchAnimalBoxComponent } from './shared/search-animal-box/search-animal-box.component';
+import { SearchVeterinaryBoxComponent } from './shared/search-veterinary-box/search-veterinary-box.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +129,13 @@ import { UsersGridComponent } from './admin/users/users-grid/users-grid.componen
     GrdFilterPipe,
     CheckboxGroupComponent,
     CheckboxPermissionsComponent,
-    UsersGridComponent
+    UsersGridComponent,
+    NotesRecordComponent,
+    AssignProductListComponent,
+    SearchEntityBoxComponent,
+    SearchContactBoxComponent,
+    SearchAnimalBoxComponent,
+    SearchVeterinaryBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -135,6 +149,7 @@ import { UsersGridComponent } from './admin/users/users-grid/users-grid.componen
     }),
     AppRoutingModule,
     ToastrModule.forRoot(),
+    NgbModule.forRoot(),
     BrowserAnimationsModule,
     AngularFontAwesomeModule
   ],

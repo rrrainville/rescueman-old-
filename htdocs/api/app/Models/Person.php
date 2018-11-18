@@ -19,22 +19,20 @@ class Person extends Model {
         'business_phone',
         'street_line_1',
         'street_line_2',
+        'city',
         'state_prov',
         'postal_code',
         'roles',
         'volunteer',
         'foster',
         'can_foster',
-        'foster_home_inspected',
-        'foster_unfit',
-        'foster_home_inspected_by',
-        'adopter_home_inspected',
-        'adopter_unfit',
+        'home_inspected',
+        'home_inspected_by',
         'adopter_contract',
-        'adopter_home_inspected_by', 'created_by', 'updated_by', 'statecode'
+        'created_by', 'updated_by', 'statecode'
     ];
 
-    protected $table = 'people';   
+    protected $table = 'persons';   
     
     /**
      * The attributes excluded from the model's JSON form.

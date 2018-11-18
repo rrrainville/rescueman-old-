@@ -13,5 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         // create 10 users using the user factory
         factory(App\User::class, 10)->create();
+
+        factory(App\Models\Person::class, 10)->create();
     }
 }

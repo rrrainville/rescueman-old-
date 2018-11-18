@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@fortawesome/fontawesome-free": "^5.4.1",
+    "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "angular-calendar": "^0.26.3",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.1.3",

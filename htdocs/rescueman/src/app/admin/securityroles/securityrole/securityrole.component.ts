@@ -147,7 +147,7 @@ export class SecurityRoleComponent implements OnInit {
     });
   }
 
-  setFormData(data: SecurityRole) {
+  setFormData(data) {
     this.formSecurityRole.patchValue({
       id: data.id,
       name: data.name,
@@ -216,6 +216,8 @@ export class SecurityRoleComponent implements OnInit {
         .subscribe(data => { 
           console.log(data);
 
+          this.setFormData(data);
+          
           this.toastr.success(`${this.entity} has been created!`)
         },
         (err: HttpErrorResponse) => {

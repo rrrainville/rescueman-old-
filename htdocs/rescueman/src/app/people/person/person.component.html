@@ -1,3 +1,235 @@
-<p>
-  person works!
-</p>
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/people']">People</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ id }}</li>
+    </ol>
+  </nav>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col col-md-8">
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary" title="Save" (click)="saveForm()">
+          <i class="fa fa-floppy-o"></i> Save</button>
+        <button type="button" class="btn btn-outline-secondary" title="New" (click)="resetForm()">
+          <i class="fa fa-plus"></i> New</button>
+        <button type="button" class="btn btn-outline-secondary" title="{{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}"
+          (click)="inactivateRecord()">
+          <i class="fa fa-trash"></i> {{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}</button>
+        <button type="button" class="btn btn-outline-secondary" title="Print" (click)="printForm()">
+          <i class="fa fa-print"></i> Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-8" [formGroup]="formPerson">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-address-card-o"></i> Personal Information
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="form-group row">
+            <div class="col col-md-12">
+              <!-- <label class="col-form-label">Name</label> -->
+              <input type="text" class="form-control" placeholder="Name" aria-label="Name" formControlName="name"
+                [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }">
+              <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col col-md-12">
+              <!-- <label class="col-form-label">Email</label> -->
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="name@mail.com" aria-label="Username"
+                  formControlName="email" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+                <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group-row">
+            <div class="col col-md-12">
+              <checkbox-group [options]="roles" [selectedValues]="selectedRoles" (toggle)="onRolesCheck($event)"></checkbox-group>
+              <!-- <app-checkbox-group [options]="entities" (toggle)="onEntityCheck($event)"></app-checkbox-group> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-home"></i> Address
+      </div>
+      <div class="card-body">
+        <div class="col col-md-12">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="Street Address" formControlName="street_line_1">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="Street Address 2" formControlName="street_line_2">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="City" formControlName="city">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="State / Province / Region"
+                formControlName="state_prov">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="Postal / Zip Code" formControlName="postal_code">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <div class="form-check my-1 mr-2">
+                  <input class="form-check-input" type="checkbox" formControlName="home_inspected">
+                  <label class="form-check-label"> Home Inspected</label>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Inspected By" formControlName="home_inspected_by">
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <input type="text" class="form-control" id="inputName" placeholder="Country"formControlName="phone">
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-phone"></i> Phone
+      </div>
+      <div class="card-body">
+        <div class="col col-md-12">
+          <div class="form-horizontal">
+            <div class="form-group row">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="(123) 123-1234" aria-label="Phone" formControlName="phone"
+                  [ngClass]="{ 'is-invalid': f.phone.touched && f.phone.errors }">
+                <div *ngIf="f.phone.touched && f.phone.errors" class="invalid-feedback">
+                  <div *ngIf="f.phone.errors.required">Phone is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-home"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="(123) 123-1234" aria-label="Phone" formControlName="home_phone">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-building"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="(123) 123-1234" aria-label="Business Phone"
+                  formControlName="business_phone">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-handshake-o"></i> Volunteer
+      </div>
+      <div class="card-body">
+        <checkbox-group [options]="volunteers" [selectedValues]="selectedVolunteers" (toggle)="onVolunteerCheck($event)"></checkbox-group>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-bed"></i> Foster
+      </div>
+      <div class="card-body">
+        <checkbox-group [options]="foster" [selectedValues]="selectedFoster" (toggle)="onFosterCheck($event)"></checkbox-group>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-paw"></i> Can Foster
+      </div>
+      <div class="card-body">
+        <checkbox-group [options]="can_foster" [selectedValues]="selectedCanFoster" (toggle)="onCanFosterCheck($event)"></checkbox-group>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-life-ring"></i> Adopter
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <app-notes-record [entityname]="entityname" [recordid]="f.id.value" [created_by]="f.updated_by.value"></app-notes-record>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-paw"></i> Animals
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-file-o"></i> Documents
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-tasks"></i> Activities
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-credit-card"></i> Donations
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-search-entity-box></app-search-entity-box>
+
+<app-form-debug [form]="formPerson"></app-form-debug>
