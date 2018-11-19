@@ -21,10 +21,14 @@ class AnimalController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
+            'name' => 'required', 
+            'statuscode' => 'required', 
             'statecode' => 'required', 
             'created_by' => 'required', 
             'updated_by' => 'required'
         ]);
+
+        error_log($request);
 
         $Animal = Animal::create($request->all());
 
@@ -33,6 +37,10 @@ class AnimalController extends Controller
 
     public function update($id, Request $request)
     {
+        // error_log($this->request);
+        
+        error_log($request);
+
         $Animal = Animal::findOrFail($id);
         $Animal->update($request->all());
 

@@ -8,14 +8,23 @@ export class ListsService {
   // declare all lists in this array
   private lists = {
     'animal': {
-      'status': ['On Hold', 'In Foster', 'Deceased'],
+      'status': ['On Hold', 'In Foster', 'Adopted', 'Deceased'],
       'type': ['Dog', 'Cat'],
       'gender': ['Male', 'Female'],
       'color': ['Black', 'White', 'Brown', 'Sedge', 'Chocolate', 'Gray'],
       'activitylevel': ['High', 'Normal', 'Low'],
       'coatlength': ['Long', 'Short'],
       'size': ['Toy', 'Small', 'Medium', 'Large', 'X-Large'],
-      'details': ['Kids', 'Dogs', 'Cats', 'Declawed', 'Special Needs', 'Altered', 'Crate Trained', 'House Trained'],
+      'details': [
+        { 'id': 1, 'name': 'Kids' }, 
+        { 'id': 2, 'name': 'Dogs' },  
+        { 'id': 3, 'name': 'Cats' }, 
+        { 'id': 4, 'name': 'Declawed' }, 
+        { 'id': 5, 'name': 'Special Needs' }, 
+        { 'id': 6, 'name': 'Altered' }, 
+        { 'id': 7, 'name': 'Crate Trained' }, 
+        { 'id': 8, 'name': 'House Trained' }
+      ],
       'breed': [
         'Affenpinscher',
         'Afghan Hound',

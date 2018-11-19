@@ -15,5 +15,9 @@ class UsersTableSeeder extends Seeder
         factory(App\User::class, 10)->create();
 
         factory(App\Models\Person::class, 10)->create();
+
+        factory(App\Models\Veterinary::class, 10)->create();
+
+        factory(App\Models\Animal::class, 10)->create();
     }
 }

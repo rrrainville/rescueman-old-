@@ -31,7 +31,9 @@ class Animal extends Model {
         'size',
         'microchipid',
         'rabbiesid',
-        'detais', 'created_by', 'updated_by', 'statecode'
+        'details', 
+        'statuscode',
+        'created_by', 'updated_by', 'statecode'
     ];
 
     protected $table = 'animals';   

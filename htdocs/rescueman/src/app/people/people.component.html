@@ -54,7 +54,7 @@
               </div>
             </div>
 
-            
+
             <div class="row">
               <table class="table table-responsive-sm table-striped">
                 <thead>
@@ -74,10 +74,10 @@
                     <td>{{ item.email }}</td>
                     <td>
                       <div class="d-inline" *ngFor="let role of roles">
-                      <span class="badge" *ngIf="checkRole(item.roles, role.id)">
-                        <i class="fa {{ role.icon }} {{'text-' + role.color}}"></i>
-                      </span>
-                    </div>
+                        <span class="badge" *ngIf="checkRole(item.roles, role.id)">
+                          <i class="fa {{ role.icon }} {{'text-' + role.color}}"></i>
+                        </span>
+                      </div>
                     </td>
                     <td>
                       <span class="badge" [ngClass]="item.statecode == 'active' ? 'badge-success' : 'badge-danger'">{{

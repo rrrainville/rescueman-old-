@@ -1,3 +1,262 @@
-<p>
-  animal works!
-</p>
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/animals']">Animals</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ id }}</li>
+    </ol>
+  </nav>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col col-md-8">
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary" title="Save" (click)="saveForm()">
+          <i class="fa fa-floppy-o"></i> Save</button>
+        <button type="button" class="btn btn-outline-secondary" title="New" (click)="resetForm()">
+          <i class="fa fa-plus"></i> New</button>
+        <button type="button" class="btn btn-outline-secondary" title="{{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}"
+          (click)="inactivateRecord()">
+          <i class="fa fa-trash"></i> {{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}</button>
+        <button type="button" class="btn btn-outline-secondary" title="Print" (click)="printForm()">
+          <i class="fa fa-print"></i> Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-8" [formGroup]="formAnimal">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-paw"></i> Animal Information
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="form-group row">
+            <div class="col col-md-12">
+              <label class="col-form-label">Name</label>
+              <input type="text" class="form-control" placeholder="Name" aria-label="Name" formControlName="name"
+                [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }">
+              <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Type</label>
+              <select class="form-control" formControlName="type">
+                <option></option>
+                <option *ngFor="let item of types">{{ item }}</option>
+              </select>
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Gender</label>
+              <select class="form-control" formControlName="gender">
+                <option></option>
+                <option *ngFor="let item of genders">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="dateOfBirth">Date of birth</label>
+              <div class="input-group">
+                <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker"
+                  formControlName="birthday_aux">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary fa fa-calendar" (click)="dp.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Weight</label>
+              <input type="text" class="form-control" placeholder="Name" aria-label="Name" formControlName="weight">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Breed</label>
+              <select class="form-control" formControlName="breed">
+                <option></option>
+                <option *ngFor="let item of breeds">{{ item }}</option>
+              </select>
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Secondary Breed</label>
+              <select class="form-control" formControlName="secondary_breed">
+                <option></option>
+                <option *ngFor="let item of breeds">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Color</label>
+              <select class="form-control" formControlName="color">
+                <option></option>
+                <option *ngFor="let item of colors">{{ item }}</option>
+              </select>
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Secondary Color</label>
+              <select class="form-control" formControlName="secondary_color">
+                <option></option>
+                <option *ngFor="let item of colors">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Alternate Name</label>
+              <input type="text" class="form-control" placeholder="Name" aria-label="Name" formControlName="alternate_name">
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Activity Level</label>
+              <select class="form-control" formControlName="activity_level">
+                <option></option>
+                <option *ngFor="let item of activitylevels">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Intake Location</label>
+              <input type="text" class="form-control" placeholder="Location" aria-label="Name" formControlName="intake_location">
+            </div>
+            <div class="col col-md-6">
+              <label for="dateOfBirth">Intake Date</label>
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="op" ngbDatepicker #op="ngbDatepicker"
+                  formControlName="intake_date_aux">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary fa fa-calendar" (click)="op.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Foster Tag</label>
+              <input type="text" class="form-control" placeholder="Location" aria-label="Name" formControlName="foster_tag">
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Species</label>
+              <input type="text" class="form-control" placeholder="Location" aria-label="Name" formControlName="species">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Coat Lenght</label>
+              <select class="form-control" formControlName="coat_lenght">
+                <option></option>
+                <option *ngFor="let item of coatlengths">{{ item }}</option>
+              </select>
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Full Grow Size</label>
+              <select class="form-control" formControlName="size">
+                <option></option>
+                <option *ngFor="let item of sizes">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Microchip ID</label>
+              <input type="text" class="form-control" placeholder="Microchip #" aria-label="Name" formControlName="microchipid">
+            </div>
+            <div class="col col-md-6">
+              <label for="inputName" class="col-form-label">Rabbies ID</label>
+              <input type="text" class="form-control" placeholder="Rabbies #" aria-label="Name" formControlName="rabbiesid">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col col-md-12">
+              <label for="inputName" class="col-form-label">Status</label>
+              <select class="form-control" formControlName="statuscode">
+                <option></option>
+                <option *ngFor="let item of status">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-search-plus"></i> Details
+      </div>
+      <div class="card-body">
+        <checkbox-group [options]="animal_datails" [selectedValues]="selectedDetails" (toggle)="onDetailsCheck($event)"></checkbox-group>
+      </div>
+    </div>
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-ambulance"></i> Vet Visits
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-4">
+    <app-notes-record [entityname]="entityname" [recordid]="f.id.value" [created_by]="f.updated_by.value"></app-notes-record>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-file-o"></i> Documents
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-tasks"></i> Activities
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-credit-card"></i> Cost
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-6">
+    <div class="card text-dark mt-2">
+      <div class="card-header">
+        <i class="fa fa-camera"></i> Photos
+      </div>
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-form-debug [form]="formAnimal"></app-form-debug>

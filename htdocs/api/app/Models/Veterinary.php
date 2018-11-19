@@ -19,10 +19,11 @@ class Veterinary extends Model {
         'street_line_1',
         'street_line_2',
         'state_prov',
-        'postal_code', 'created_by', 'updated_by', 'statecode'
+        'postal_code', 
+        'created_by', 'updated_by', 'statecode'
     ];
 
-    protected $table = 'veterinarians';   
+    protected $table = 'veterinaries';   
     
     /**
      * The attributes excluded from the model's JSON form.
