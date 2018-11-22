@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BankTransaction;
 use Illuminate\Http\Request;
+use Faker\Factory as Faker;
 
 class BankTransactionController extends Controller
 {
@@ -25,6 +26,19 @@ class BankTransactionController extends Controller
             'created_by' => 'required', 
             'updated_by' => 'required'
         ]);
+
+        $faker = Faker::create();
+
+        // error_log($request->get('from'));
+
+        $request->merge([
+            'name' => $faker->uuid
+        ]);
+
+        // $request->merge(['from' => 'roger']);
+
+        // $data = $request->all();
+        // error_log($request);
 
         $BankTransaction = BankTransaction::create($request->all());
 

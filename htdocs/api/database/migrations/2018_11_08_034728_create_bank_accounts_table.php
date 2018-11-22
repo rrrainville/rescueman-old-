@@ -16,9 +16,9 @@ class CreateBankAccountsTable extends Migration
         Schema::create('bank_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('number');
+            $table->string('number')->nullable($value = true);
             $table->decimal('balance', 8, 2);
-            $table->text('description');
+            $table->text('description')->nullable($value = true);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);

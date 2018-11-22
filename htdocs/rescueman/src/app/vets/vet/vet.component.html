@@ -84,7 +84,7 @@
                 <input type="text" class="form-control" placeholder="Dr. John Doe" aria-label="Veterinary"
                   formControlName="veterinary_name" [ngClass]="{ 'is-invalid': f.veterinary_id.touched && f.veterinary_id.errors }" disabled>                  
                 <div *ngIf="f.veterinary_id.touched && f.veterinary_id.errors" class="invalid-feedback">
-                  <div *ngIf="f.veterinary_id.errors.required">Vetrinary is required</div>
+                  <div *ngIf="f.veterinary_id.errors.required">Veterinary is required</div>
                 </div>
               </div>
             </div>

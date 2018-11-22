@@ -76,6 +76,7 @@ import { SearchEntityBoxComponent } from './shared/search-entity-box/search-enti
 import { SearchContactBoxComponent } from './shared/search-contact-box/search-contact-box.component';
 import { SearchAnimalBoxComponent } from './shared/search-animal-box/search-animal-box.component';
 import { SearchVeterinaryBoxComponent } from './shared/search-veterinary-box/search-veterinary-box.component';
+import { AccountSummaryComponent } from './finance/accounts/account-summary/account-summary.component';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { SearchVeterinaryBoxComponent } from './shared/search-veterinary-box/sea
     SearchEntityBoxComponent,
     SearchContactBoxComponent,
     SearchAnimalBoxComponent,
-    SearchVeterinaryBoxComponent
+    SearchVeterinaryBoxComponent,
+    AccountSummaryComponent
   ],
   imports: [
     BrowserModule,
