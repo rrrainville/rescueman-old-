@@ -124,16 +124,16 @@ export class PaymentComponent implements OnInit {
   setDate(_date) {
     // debugger;
 
-    console.log(_date);
+    // console.log(_date);
 
     if(_date) {
       let _date_c = new Date(Date.parse(_date));
 
-      console.log(_date_c);
+      // console.log(_date_c);
 
-      console.log(_date_c.getFullYear());
-      console.log(_date_c.getMonth());
-      console.log(_date_c.getDate());
+      // console.log(_date_c.getFullYear());
+      // console.log(_date_c.getMonth());
+      // console.log(_date_c.getDate());
 
       return new NgbDate(_date_c.getFullYear(), _date_c.getMonth() + 1, _date_c.getDate());
     }
@@ -191,12 +191,15 @@ export class PaymentComponent implements OnInit {
     this.formDeposit.reset();
 
     this.formDeposit.patchValue({
+      transaction_type: 'w',
       created_by: this.authService.getAuthenticatedUser(),
       updated_by: this.authService.getAuthenticatedUser(),
       statecode: 'active'
     });
 
-    this.router.navigate(['/finance/payment/new']);
+    this.id = 'New Payment';
+
+    // this.router.navigate(['/finance/payment/new']);
 
     //this.formUser.reset();
   }
@@ -234,7 +237,7 @@ export class PaymentComponent implements OnInit {
 
           this.setFormData(data);
 
-          this.toastr.success('Veterinary has been created!')
+          this.toastr.success('Payment has been created!')
         },
         (err: HttpErrorResponse) => {
           if(err.error.error)
@@ -247,7 +250,7 @@ export class PaymentComponent implements OnInit {
         .subscribe(data => { 
           console.log(data);
 
-          this.toastr.success('Veterinary has been saved!')
+          this.toastr.success('Payment has been saved!')
         },
         (err: HttpErrorResponse) => {
           if(err.error.error)
@@ -256,6 +259,8 @@ export class PaymentComponent implements OnInit {
             this.toastr.error('Invalid Information!');
         });
     }
+
+    this.router.navigate(['/finance']);
   }
 
   printForm() {

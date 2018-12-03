@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AccountTransaction;
 use Illuminate\Http\Request;
+use Faker\Factory as Faker;
 
 class AccountTransactionController extends Controller
 {
@@ -44,7 +45,14 @@ class AccountTransactionController extends Controller
 
     public function create(Request $request)
     {
+        $faker = Faker::create();
+
+        $request->merge([
+            'reference_number' => $faker->randomNumber($nbDigits = NULL, $strict = false)
+        ]);
+
         $this->validate($request, [
+            'number' => 'required',
             'statecode' => 'required', 
             'created_by' => 'required', 
             'updated_by' => 'required'

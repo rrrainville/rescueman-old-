@@ -17,6 +17,8 @@ class AccountTransaction extends Model {
         'transaction_date',
         'amount',
         'transaction_type',
+        'regarding_id',
+        'statuscode',
         'created_by', 'updated_by', 'statecode'
     ];
 

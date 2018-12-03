@@ -130,16 +130,16 @@ export class ReceivableComponent implements OnInit {
   setDate(_date) {
     // debugger;
 
-    console.log(_date);
+    // console.log(_date);
 
     if(_date) {
       let _date_c = new Date(Date.parse(_date));
 
-      console.log(_date_c);
+      // console.log(_date_c);
 
-      console.log(_date_c.getFullYear());
-      console.log(_date_c.getMonth());
-      console.log(_date_c.getDate());
+      // console.log(_date_c.getFullYear());
+      // console.log(_date_c.getMonth());
+      // console.log(_date_c.getDate());
 
       return new NgbDate(_date_c.getFullYear(), _date_c.getMonth() + 1, _date_c.getDate());
     }
@@ -200,12 +200,15 @@ export class ReceivableComponent implements OnInit {
     this.formDeposit.reset();
 
     this.formDeposit.patchValue({
+      transaction_type: 'd',
       created_by: this.authService.getAuthenticatedUser(),
       updated_by: this.authService.getAuthenticatedUser(),
       statecode: 'active'
     });
 
-    this.router.navigate(['/finance/deposit/new']);
+    // this.router.navigate(['/finance/deposit/new']);
+
+    this.id = 'New Deposit';
 
     //this.formUser.reset();
   }
@@ -267,6 +270,8 @@ export class ReceivableComponent implements OnInit {
             this.toastr.error('Invalid Information!');
         });
     }
+
+    this.router.navigate(['/finance']);
   }
 
   printForm() {

@@ -22,6 +22,8 @@ class CreateAccountTransactionsTable extends Migration
             $table->dateTime('transaction_date')->nullable($value = true);
             $table->decimal('amount', 8, 2)->nullable($value = true);
             $table->enum('transaction_type', ['c', 'd']);
+            $table->integer('regarding_id')->nullable($value = true);
+            $table->string('statuscode')->nullable($value = true);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
