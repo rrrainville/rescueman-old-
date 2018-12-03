@@ -104,10 +104,28 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 	Controller: BankTransactionController
     */
     $router->get('banktransactions',  ['uses' => 'BankTransactionController@getAll']);    
+    $router->get('banktransactions/transfers',  ['uses' => 'BankTransactionController@getTransfers']); 
+    $router->get('banktransactions/deposits',  ['uses' => 'BankTransactionController@getDeposits']); 
+    $router->get('banktransactions/payments',  ['uses' => 'BankTransactionController@getPayments']); 
     $router->get('banktransactions/{id}', ['uses' => 'BankTransactionController@get']);
     $router->post('banktransactions', ['uses' => 'BankTransactionController@create']);
     $router->delete('banktransactions/{id}', ['uses' => 'BankTransactionController@delete']);
     $router->put('banktransactions/{id}', ['uses' => 'BankTransactionController@update']);
+
+    /*
+	Model: AccountTransaction
+	Controller: BankTransactionController
+    */
+    $router->get('accounttransactions',  ['uses' => 'AccountTransactionController@getAll']);    
+    $router->get('accounttransactions/debits',  ['uses' => 'AccountTransactionController@getDebits']); 
+    $router->get('accounttransactions/debits/total',  ['uses' => 'AccountTransactionController@getTotalDebits']); 
+    $router->get('accounttransactions/credits',  ['uses' => 'AccountTransactionController@getCredits']); 
+    $router->get('accounttransactions/credits/total',  ['uses' => 'AccountTransactionController@getTotalCredits']); 
+    $router->get('accounttransactions/account/{id}', ['uses' => 'AccountTransactionController@getByAccountId']);
+    $router->get('accounttransactions/{id}', ['uses' => 'AccountTransactionController@get']);
+    $router->post('accounttransactions', ['uses' => 'AccountTransactionController@create']);
+    $router->delete('accounttransactions/{id}', ['uses' => 'AccountTransactionController@delete']);
+    $router->put('accounttransactions/{id}', ['uses' => 'AccountTransactionController@update']);
 
     /*
 	Model: Document

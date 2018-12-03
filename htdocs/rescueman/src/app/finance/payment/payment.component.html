@@ -1,3 +1,140 @@
-<p>
-  payment works!
-</p>
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item"><a [routerLink]="['/finance']">Finance</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ id }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-md-8">
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-outline-secondary" title="Save" (click)="saveForm()">
+          <i class="fa fa-floppy-o"></i> Save</button>
+        <button type="button" class="btn btn-outline-secondary" title="New" (click)="resetForm()">
+          <i class="fa fa-plus"></i> New</button>
+        <button type="button" class="btn btn-outline-secondary" title="{{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}"
+          (click)="inactivateRecord()">
+          <i class="fa fa-trash"></i> {{ f.statecode.value === 'active' ? 'Inactivate' : 'Activate' }}</button>
+        <button type="button" class="btn btn-outline-secondary" title="Print" (click)="printForm()">
+          <i class="fa fa-print"></i> Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-lg-12">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-money"></i> Payment
+      </div>
+      <div class="card-body">
+        <div [formGroup]="formDeposit">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">From Account</label>
+            <div class="col-sm-10">
+              <select class="form-control" formControlName="from_account">
+                <option></option>
+                <option *ngFor="let item of accounts" value="{{item.id}}">{{ item.name }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Regarding</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" placeholder="Regarding" aria-label="Name" formControlName="regarding">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Due Date</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker" type="text"
+                  formControlName="due_date_aux">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary fa fa-calendar" (click)="dp.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Payment Date</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dt" ngbDatepicker #dt="ngbDatepicker" type="text"
+                  formControlName="transaction_date_aux">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary fa fa-calendar" (click)="dt.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Amount</label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" placeholder="1,000.00" aria-label="Balance" formControlName="amount"
+                  [ngClass]="{ 'is-invalid': f.amount.touched && f.amount.errors }">
+                <div *ngIf="f.amount.touched && f.amount.errors" class="invalid-feedback">
+                  <div *ngIf="f.amount.errors.required">Amount is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Payment Method</label>
+            <div class="col-sm-10">
+              <select class="form-control" formControlName="method">
+                <option></option>
+                <option *ngFor="let item of methods">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Status</label>
+            <div class="col-sm-10">
+              <select class="form-control" formControlName="statuscode">
+                <option></option>
+                <option *ngFor="let item of status">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputName" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="3" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col col-lg-12">
+    <div class="card text-dark">
+      <div class="card-header">
+        <i class="fa fa-money"></i> Transactions
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col col-md-12">
+            <app-transactions-list></app-transactions-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-form-debug [form]="formDeposit"></app-form-debug>

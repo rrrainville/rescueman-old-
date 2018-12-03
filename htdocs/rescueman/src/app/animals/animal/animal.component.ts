@@ -163,7 +163,7 @@ export class AnimalComponent implements OnInit {
 
       console.log(_date_c);
 
-      return new NgbDate(_date_c.getFullYear(), _date_c.getMonth(), _date_c.getDay());
+      return new NgbDate(_date_c.getFullYear(), _date_c.getMonth() + 1, _date_c.getDate());
     }
   }
 
@@ -266,13 +266,13 @@ export class AnimalComponent implements OnInit {
     if(this.f.birthday_aux.value) {
       x = this.f.birthday_aux.value;
 
-      this.f.birthday.setValue(new Date(x.year, x.month, x.day).toISOString().slice(0,10));
+      this.f.birthday.setValue(new Date(x.year, x.month - 1, x.day).toISOString().slice(0,10));
     }
       
     if(this.f.intake_date_aux.value) {
       x = this.f.intake_date_aux.value;
 
-      this.f.intake_date.setValue(new Date(x.year, x.month, x.day).toISOString().slice(0,10));
+      this.f.intake_date.setValue(new Date(x.year, x.month - 1, x.day).toISOString().slice(0,10));
     }
 
     console.log(this.formAnimal.value);

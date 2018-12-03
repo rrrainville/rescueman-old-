@@ -51,3 +51,35 @@ $factory->define(App\Models\Animal::class, function (Faker\Generator $faker) {
         'updated_by' => $faker->randomDigitNotNull        
     ];
 });
+
+$factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstNameMale,
+        'serial' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'quantity' => $faker->randomDigitNotNull,
+        'created_by' => $faker->randomDigitNotNull,
+        'updated_by' => $faker->randomDigitNotNull        
+    ];
+});
+
+$factory->define(App\Models\BankAccount::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstNameMale,
+        'number' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'balance' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 100000),
+        'created_by' => $faker->randomDigitNotNull,
+        'updated_by' => $faker->randomDigitNotNull        
+    ];
+});
+
+$factory->define(App\Models\AccountTransaction::class, function (Faker\Generator $faker) {
+    return [
+        'number' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'account_id' => $faker->randomDigitNotNull,
+        'transaction_date' => $faker->dateTime($max = 'now', $timezone = null),
+        'amount' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10000),
+        'transaction_type' => $faker->randomElement($array = array ('d','c')),
+        'created_by' => $faker->randomDigitNotNull,
+        'updated_by' => $faker->randomDigitNotNull        
+    ];
+});

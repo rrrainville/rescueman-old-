@@ -46,7 +46,7 @@
                   <i class="fa fa-fw fa-credit-card"></i>
                 </div>
                 <div class="mr-5">
-                  <h1>$ 45,678.90</h1> Deposits
+                  <h1>{{ credits | currency}}</h1> Deposits
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@
                   <i class="fa fa-fw fa-exchange"></i>
                 </div>
                 <div class="mr-5">
-                  <h1>$ 9,876.54</h1> Withdraws
+                  <h1>{{ debits | currency}}</h1> Withdraws
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@
                   <i class="fa fa-fw fa-money"></i>
                 </div>
                 <div class="mr-5">
-                  <h1>$ 12,345.67</h1> Balance
+                  <h1>{{ (credits - debits) | currency}}</h1> Balance
                 </div>
               </div>
             </div>
@@ -92,157 +92,9 @@
             <i class="fa fa-money"></i> Last Transactions
           </div>
           <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-
-              </div>
-
-              <div class="col-sm-12 col-md-6">
-                <div class="form-inline  justify-content-end">
-                  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Search:</label>
-                  <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
-                </div>
-              </div>
-            </div>
-            <br />
-            <div class="row">
-              <table class="table table-responsive-sm table-striped">
-                <thead>
-                  <tr>
-                    <th>Transaction ID</th>
-                    <th>Account</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>123</td>
-                    <td>RBC Bank</td>
-                    <td>Cash Withdraw</td>
-                    <td>03/04/2018</td>
-                    <td>-$ 100.00</td>
-                    <td>
-                      <span class="badge badge-success">Reconciled</span>
-                    </td>
-                    <td style="width:140px">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>123</td>
-                    <td>TD Bank</td>
-                    <td>Cash Withdraw</td>
-                    <td>03/04/2018</td>
-                    <td>-$ 100.00</td>
-                    <td>
-                      <span class="badge badge-warning">Pending</span>
-                    </td>
-                    <td style="width:140px">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>123</td>
-                    <td>PayPal</td>
-                    <td>Paypal transfer</td>
-                    <td>07/04/2018</td>
-                    <td>$ 460.00</td>
-                    <td>
-                      <span class="badge badge-warning">Pending</span>
-                    </td>
-                    <td style="width:140px">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>123</td>
-                    <td>RBC Bank</td>
-                    <td>Transfer to TD Bank</td>
-                    <td>03/04/2018</td>
-                    <td>-$ 250.00</td>
-                    <td>
-                      <span class="badge badge-success">Processed</span>
-                    </td>
-                    <td style="width:140px">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>543</td>
-                    <td>RBC Bank</td>
-                    <td>Donation</td>
-                    <td>03/04/2018</td>
-                    <td>$ 150.00</td>
-                    <td>
-                      <span class="badge badge-success">Reconciled</span>
-                    </td>
-                    <td style="width:140px">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>342</td>
-                    <td>RBC Bank</td>
-                    <td>Adoption Fee</td>
-                    <td>04/04/2018</td>
-                    <td>$ 300.00</td>
-                    <td>
-                      <span class="badge badge-warning">Pending</span>
-                    </td>
-                    <td style="width:140px">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-outline-secondary fa fa-search-plus"></button>
-                        <button type="button" class="btn btn-outline-secondary fa fa-edit"></button>
-                        <button type="button" class="btn btn-outline-danger fa fa-trash-o"></button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                Showing 1 to 10 of 57 entries
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
-                </nav>
+            <div class="form-group row">
+              <div class="col col-md-12">
+                <app-transactions-list [accountId]="-1"></app-transactions-list>
               </div>
             </div>
           </div>

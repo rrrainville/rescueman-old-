@@ -21,6 +21,8 @@ export class AccountComponent implements OnInit {
 
   formSubscription: Subscription;
 
+  accountId: any;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -48,6 +50,8 @@ export class AccountComponent implements OnInit {
 
           return;
         }
+
+        this.accountId = this.id;
 
         this.bankAccountsService.get(this.id).subscribe(
           data => {

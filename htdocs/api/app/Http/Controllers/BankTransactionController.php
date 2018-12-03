@@ -19,26 +19,37 @@ class BankTransactionController extends Controller
         return response()->json(BankTransaction::find($id));
     }
 
+    public function getTransfers()
+    {
+        return response()->json(BankTransaction::where('transaction_type', 't')->get());
+    }
+
+    public function getDeposits()
+    {
+        return response()->json(BankTransaction::where('transaction_type', 'd')->get());
+    }
+
+    public function getPayments()
+    {
+        return response()->json(BankTransaction::where('transaction_type', 'w')->get());
+    }
+
     public function create(Request $request)
     {
+        error_log($request);
+
+        $faker = Faker::create();
+
+        $request->merge([
+            'reference_number' => $faker->randomNumber($nbDigits = NULL, $strict = false)
+        ]);
+
         $this->validate($request, [
+            'reference_number' => 'required',
             'statecode' => 'required', 
             'created_by' => 'required', 
             'updated_by' => 'required'
         ]);
-
-        $faker = Faker::create();
-
-        // error_log($request->get('from'));
-
-        $request->merge([
-            'name' => $faker->uuid
-        ]);
-
-        // $request->merge(['from' => 'roger']);
-
-        // $data = $request->all();
-        // error_log($request);
 
         $BankTransaction = BankTransaction::create($request->all());
 

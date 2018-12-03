@@ -4,24 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAccountTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
      *
+     * transaction_type => Debit / Credit
+     * 
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('account_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email', 250)->unique();
-            $table->string('password');
-            $table->string('phone')->nullable($value = true);
-            $table->string('address')->nullable($value = true);
-            $table->integer('role_id')->nullable($value = true);
-            $table->integer('organization_id')->nullable($value = true);
+            $table->string('number');
+            $table->integer('account_id');
+            $table->dateTime('transaction_date')->nullable($value = true);
+            $table->decimal('amount', 8, 2)->nullable($value = true);
+            $table->enum('transaction_type', ['c', 'd']);
             $table->integer('created_by');
             $table->integer('updated_by');
             $table->enum('statecode', ['active', 'inactive']);
@@ -36,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('account_transactions');
     }
 }

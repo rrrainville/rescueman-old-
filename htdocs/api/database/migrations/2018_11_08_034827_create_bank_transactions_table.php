@@ -15,7 +15,7 @@ class CreateBankTransactionsTable extends Migration
     {
         Schema::create('bank_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('reference_number');
             $table->enum('transaction_type', ['d', 'w', 't']);
             $table->string('type')->nullable($value = true);
             $table->integer('from_account')->nullable($value = true);
@@ -27,7 +27,7 @@ class CreateBankTransactionsTable extends Migration
             $table->dateTime('transaction_date')->nullable($value = true);
             $table->decimal('amount', 8, 2)->nullable($value = true);
             $table->string('method')->nullable($value = true);
-            $table->string('status')->nullable($value = true);
+            $table->string('statuscode')->nullable($value = true);
             $table->text('description')->nullable($value = true);
             $table->integer('created_by');
             $table->integer('updated_by');

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountTransactionsService } from '../shared/controllers/account-transactions.service';
 
 @Component({
   selector: 'app-finance',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceComponent implements OnInit {
 
-  constructor() { }
+  credits: any;
+  debits: any;
+
+  constructor(
+    private accountTransactionsService: AccountTransactionsService
+  ) { }
 
   ngOnInit() {
+    this.accountTransactionsService.getTotalDebits()
+      .subscribe(total => this.debits = total);      
+
+    this.accountTransactionsService.getTotalCredits()
+      .subscribe(total => this.credits = total);
   }
 
 }

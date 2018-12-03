@@ -9,6 +9,7 @@ import { ListsService } from 'src/app/shared/lists.service';
 import { BankAccountsService } from 'src/app/shared/controllers/bank-accounts.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PeopleService } from 'src/app/shared/controllers/people.service';
 
 @Component({
   selector: 'app-receivable',
@@ -36,6 +37,7 @@ export class ReceivableComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authService: AuthService,    
+    private peopleService: PeopleService,
     private bankAccountsService: BankAccountsService,
     private bankTransactionsService: BankTransactionsService,
     private listsService: ListsService
@@ -64,7 +66,7 @@ export class ReceivableComponent implements OnInit {
         console.log(this.id);
 
         if(this.id == 'new') {
-          this.id = 'New Animal';
+          this.id = 'New Deposit';
 
           return;
         }
@@ -107,7 +109,8 @@ export class ReceivableComponent implements OnInit {
       // name: ['test'],
       transaction_type: ['d'],
       type: [null, [ Validators.required ]],
-      from: [null, [ Validators.required ]],
+      from_name: [null, [ Validators.required ]],
+      from: [null],
       to_account: [null],
       regarding: [null],
       due_date: [null],
@@ -134,7 +137,11 @@ export class ReceivableComponent implements OnInit {
 
       console.log(_date_c);
 
-      return new NgbDate(_date_c.getFullYear(), _date_c.getMonth(), _date_c.getDay());
+      console.log(_date_c.getFullYear());
+      console.log(_date_c.getMonth());
+      console.log(_date_c.getDate());
+
+      return new NgbDate(_date_c.getFullYear(), _date_c.getMonth() + 1, _date_c.getDate());
     }
   }
 
@@ -148,22 +155,22 @@ export class ReceivableComponent implements OnInit {
       to_account: data.to_account,
       regarding: data.regarding,
       due_date: data.due_date,
-      due_date_aux: this.setDate(data.due_date_aux),
+      due_date_aux: this.setDate(data.due_date),
       transaction_date: data.transaction_date,
-      transaction_date_aux: data.transaction_aux,
+      transaction_date_aux: this.setDate(data.transaction_date),
       amount: data.amount,
       method: data.method,
       statuscode: data.statuscode,
       description: data.description,
-
-      birthday_aux:  this.setDate(data.birthday),
 
       statecode: data.statecode,
       created_by: data.created_by,
       updated_by: this.authService.getAuthenticatedUser()
     });
 
-    this.id = data.name;
+    this.id = data.reference_number;
+
+    this.getContact(data.from);
 
     this.enableFields(this.f.statecode.value);
 
@@ -216,13 +223,13 @@ export class ReceivableComponent implements OnInit {
     if(this.f.due_date_aux.value) {
       x = this.f.due_date_aux.value;
 
-      this.f.due_date.setValue(new Date(x.year, x.month, x.day).toISOString().slice(0,10));
+      this.f.due_date.setValue(new Date(x.year, x.month - 1, x.day).toISOString().slice(0,10));
     }
       
     if(this.f.transaction_date_aux.value) {
       x = this.f.transaction_date_aux.value;
 
-      this.f.transaction_date.setValue(new Date(x.year, x.month, x.day).toISOString().slice(0,10));
+      this.f.transaction_date.setValue(new Date(x.year, x.month - 1, x.day).toISOString().slice(0,10));
     }
 
     console.log(this.formDeposit.value);
@@ -236,7 +243,7 @@ export class ReceivableComponent implements OnInit {
 
           this.setFormData(data);
 
-          this.toastr.success('Veterinary has been created!')
+          this.toastr.success('Deposit has been created!')
         },
         (err: HttpErrorResponse) => {
           if(err.error.error)
@@ -249,9 +256,11 @@ export class ReceivableComponent implements OnInit {
         .subscribe(data => { 
           console.log(data);
 
-          this.toastr.success('Veterinary has been saved!')
+          this.toastr.success('Deposit has been saved!')
         },
         (err: HttpErrorResponse) => {
+          console.log(err);
+
           if(err.error.error)
             this.toastr.error(err.error.error);
           else
@@ -262,5 +271,21 @@ export class ReceivableComponent implements OnInit {
 
   printForm() {
     console.log('printForm');
+  }
+
+  contactSelected(event) {
+    const contact = event;
+
+    this.f.from.setValue(contact.id);
+    this.f.from_name.setValue(contact.name);
+
+    console.log("contactSelected", event);
+  }
+
+  getContact(id) {
+    this.peopleService.get(id)
+      .subscribe(data => {
+        this.f.from_name.setValue(data.name);
+      });
   }
 }

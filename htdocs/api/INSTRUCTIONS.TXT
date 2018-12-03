@@ -1,5 +1,6 @@
 --criar tabela
 php artisan make:migration create_TABLENAME_table –-create=create_TABLENAME_table
+php artisan make:migration create_account_transactions_table
 
 --coloca os campos no arquivo criado em database/migrations
 
@@ -24,3 +25,6 @@ php artisan migrate:refresh --seed
 
 --seed
 php artisan db:seed
+
+--atualizar o ambiente
+composer update --no-scripts 

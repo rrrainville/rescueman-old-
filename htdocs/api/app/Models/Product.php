@@ -17,7 +17,8 @@ class Product extends Model {
         'serial',
         'quantity',
         'description',
-        'notes', 'created_by', 'updated_by', 'statecode'
+        'notes', 
+        'created_by', 'updated_by', 'statecode'
     ];
 
     protected $table = 'products';   

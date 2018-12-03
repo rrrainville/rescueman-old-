@@ -22,6 +22,13 @@ export class BankTransactionsService {
     return this.http.get<BankTransaction>(`${this.apiURL}/${id}`);
   }
 
+  getTransfersByType(type) {
+    if(type)
+      return this.http.get<BankTransaction>(`${this.apiURL}/${type}`);
+    else
+      return this.getAll();
+  }
+
   update(item: any) {
     const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
 

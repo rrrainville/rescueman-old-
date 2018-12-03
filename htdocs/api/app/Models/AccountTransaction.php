@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BankTransaction extends Model {
+class AccountTransaction extends Model {
 
     /**
      * The attributes that are mass assignable.
@@ -12,24 +12,15 @@ class BankTransaction extends Model {
      * @var array
      */
     protected $fillable = [
-        'reference_number',
-        'transaction_type',
-        'type',
-        'from_account',
-        'to_account',
-        'from',
-        'to',
-        'regarding',
-        'due_date',
+        'number',
+        'account_id',
         'transaction_date',
         'amount',
-        'method',
-        'statuscode',
-        'description', 
+        'transaction_type',
         'created_by', 'updated_by', 'statecode'
     ];
 
-    protected $table = 'bank_transactions';   
+    protected $table = 'account_transactions';   
     
     /**
      * The attributes excluded from the model's JSON form.
