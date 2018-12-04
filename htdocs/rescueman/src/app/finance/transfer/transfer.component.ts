@@ -9,6 +9,7 @@ import { BankTransactionsService } from 'src/app/shared/controllers/bank-transac
 import { ListsService } from 'src/app/shared/lists.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PagerService } from 'src/app/shared/pager.service';
 
 @Component({
   selector: 'app-transfer',
@@ -16,6 +17,20 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./transfer.component.scss']
 })
 export class TransferComponent implements OnInit {
+
+  public searchText: string;
+
+  // array of all items to be paged
+  private allItems: any = [];
+ 
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any = [];
+
+  //total records per page
+  pageSize: number = 10;
 
   entityname: string = "bank_transactions";
 
@@ -35,6 +50,7 @@ export class TransferComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
+    private pagerService: PagerService,
     private authService: AuthService,    
     private bankAccountsService: BankAccountsService,
     private bankTransactionsService: BankTransactionsService,
@@ -42,6 +58,8 @@ export class TransferComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAccounts();
+
     this.initFormData();
 
     console.log(this.route);
@@ -80,6 +98,32 @@ export class TransferComponent implements OnInit {
             this.setFormData(data);   //this.data['name'];
           });
       });
+
+    this.bankTransactionsService.getTransfersByType('transfers')
+      .subscribe(data => {
+        console.log(data);
+
+        this.allItems = data
+
+        // initialize to page 1
+        this.setPage(1);
+      });
+  }
+
+  setPageSize(event) {
+    console.log("setPageSize", event.target.value);
+
+    this.pageSize = event.target.value;
+
+    this.setPage(1);
+  }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.allItems.length, page, this.pageSize);
+
+    // get current page of items
+    this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
   // convenience getter for easy access to form fields
@@ -125,11 +169,11 @@ export class TransferComponent implements OnInit {
     if(_date) {
       let _date_c = new Date(Date.parse(_date));
 
-      console.log(_date_c);
+      // console.log(_date_c);
 
-      console.log(_date_c.getFullYear());
-      console.log(_date_c.getMonth());
-      console.log(_date_c.getDate());
+      // console.log(_date_c.getFullYear());
+      // console.log(_date_c.getMonth());
+      // console.log(_date_c.getDate());
 
       return new NgbDate(_date_c.getFullYear(), _date_c.getMonth() + 1, _date_c.getDate());
     }
@@ -141,7 +185,7 @@ export class TransferComponent implements OnInit {
       // name: data.name,
       transaction_type: 't',
       to_account: data.to_account,
-      from_account: data.to_account,
+      from_account: data.from_account,
       transaction_date: data.transaction_date,
       transaction_date_aux: this.setDate(data.transaction),
       amount: data.amount,
@@ -182,12 +226,13 @@ export class TransferComponent implements OnInit {
     this.formDeposit.reset();
 
     this.formDeposit.patchValue({
+      transaction_type: 't',
       created_by: this.authService.getAuthenticatedUser(),
       updated_by: this.authService.getAuthenticatedUser(),
       statecode: 'active'
     });
 
-    this.router.navigate(['/finance/transfer/new']);
+    // this.router.navigate(['/finance/transfer/new']);
 
     //this.formUser.reset();
   }
@@ -202,11 +247,11 @@ export class TransferComponent implements OnInit {
 
     let x: NgbDate;
 
-    if(this.f.due_date_aux.value) {
-      x = this.f.due_date_aux.value;
+    // if(this.f.due_date_aux.value) {
+    //   x = this.f.due_date_aux.value;
 
-      this.f.due_date.setValue(new Date(x.year, x.month - 1, x.day).toISOString().slice(0,10));
-    }
+    //   this.f.due_date.setValue(new Date(x.year, x.month - 1, x.day).toISOString().slice(0,10));
+    // }
       
     if(this.f.transaction_date_aux.value) {
       x = this.f.transaction_date_aux.value;
@@ -253,4 +298,19 @@ export class TransferComponent implements OnInit {
     console.log('printForm');
   }
 
+  getAccounts() {
+    this.bankAccountsService.getAll()
+      .subscribe(data => this.accounts = data);
+  }
+
+  findAccount(id) {
+    if(this.accounts) {
+      for(let i = 0; i < this.accounts.length; i++) {
+        if(this.accounts[i].id == id)
+          return this.accounts[i].name;
+      }
+    }
+
+    return "Not Found";
+  }
 }

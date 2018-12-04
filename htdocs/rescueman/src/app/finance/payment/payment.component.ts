@@ -9,6 +9,7 @@ import { BankTransactionsService } from 'src/app/shared/controllers/bank-transac
 import { ListsService } from 'src/app/shared/lists.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PagerService } from 'src/app/shared/pager.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +17,20 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+
+  public searchText: string;
+
+  // array of all items to be paged
+  private allItems: any = [];
+ 
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any = [];
+
+  //total records per page
+  pageSize: number = 10;
 
   entityname: string = "bank_transactions";
 
@@ -35,6 +50,7 @@ export class PaymentComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
+    private pagerService: PagerService,
     private authService: AuthService,    
     private bankAccountsService: BankAccountsService,
     private bankTransactionsService: BankTransactionsService,
@@ -42,6 +58,8 @@ export class PaymentComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getAccounts();
+
     this.initFormData();
 
     console.log(this.route);
@@ -81,6 +99,32 @@ export class PaymentComponent implements OnInit {
             this.setFormData(data);   //this.data['name'];
           });
       });
+
+      this.bankTransactionsService.getTransfersByType('payments')
+      .subscribe(data => {
+        console.log(data);
+
+        this.allItems = data
+
+        // initialize to page 1
+        this.setPage(1);
+      });
+  }
+
+  setPageSize(event) {
+    console.log("setPageSize", event.target.value);
+
+    this.pageSize = event.target.value;
+
+    this.setPage(1);
+  }
+
+  setPage(page: number) {
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.allItems.length, page, this.pageSize);
+
+    // get current page of items
+    this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
   // convenience getter for easy access to form fields
@@ -267,4 +311,19 @@ export class PaymentComponent implements OnInit {
     console.log('printForm');
   }
 
+  getAccounts() {
+    this.bankAccountsService.getAll()
+      .subscribe(data => this.accounts = data);
+  }
+
+  findAccount(id) {
+    if(this.accounts) {
+      for(let i = 0; i < this.accounts.length; i++) {
+        if(this.accounts[i].id == id)
+          return this.accounts[i].name;
+      }
+    }
+
+    return "Not Found";
+  }
 }
